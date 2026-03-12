@@ -25,8 +25,8 @@ const email = 'info@fix-pro.co.il';
       loading="eager"
       fetchpriority="high"
     />
-    <!-- Dark navy gradient overlay - stronger on the right (text side in RTL) -->
-    <div class="absolute inset-0 bg-gradient-to-l from-brand-700/95 via-brand-600/90 to-brand-600/75"></div>
+    <!-- Dark gradient overlay - stronger on the right (text side in RTL) -->
+    <div class="absolute inset-0 bg-gradient-to-l from-brand-700/95 via-brand-700/85 to-brand-700/60"></div>
   </div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -34,7 +34,7 @@ const email = 'info@fix-pro.co.il';
       <!-- Content (right side in RTL - over dark overlay) -->
       <div class="text-center lg:text-start order-2 lg:order-1">
         <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight mb-6">
-          בעלי מקצוע <span class="text-accent-400">מנוסים</span><br/>
+          בעלי מקצוע <span class="text-accent-500">מנוסים</span><br/>
           באזור שלכם
         </h1>
 
@@ -42,10 +42,10 @@ const email = 'info@fix-pro.co.il';
           {subtitle}
         </p>
 
-        <!-- CTA Button - Coral -->
+        <!-- CTA Button - Orange, Sharp corners -->
         <a
           href="#contact"
-          class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-10 py-4 rounded-lg text-lg font-bold hover:bg-accent-600 transition-colors shadow-xl shadow-accent-500/30 mb-10"
+          class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-10 py-4 text-lg font-bold hover:bg-accent-600 transition-colors shadow-xl mb-10"
         >
           קבלו הצעת מחיר
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,9 +54,9 @@ const email = 'info@fix-pro.co.il';
         </a>
       </div>
 
-      <!-- Form Card (left side in RTL - floating over image) -->
+      <!-- Form Card (left side in RTL - floating over image) - Sharp corners -->
       <div class="order-1 lg:order-2">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 lg:ms-auto">
+        <div class="bg-white shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 lg:ms-auto">
           <h2 class="text-xl font-heading font-bold text-dark mb-2 text-center">
             השאירו פרטים ונחזור אליכם
           </h2>
@@ -72,7 +72,7 @@ const email = 'info@fix-pro.co.il';
                 id="hero-name"
                 name="name"
                 required
-                class="w-full px-4 py-3 border border-border rounded-lg text-dark placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow"
+                class="w-full px-4 py-3 border border-border text-dark placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow"
                 placeholder="הכניסו את שמכם"
               />
             </div>
@@ -90,7 +90,7 @@ const email = 'info@fix-pro.co.il';
             </div>
             <button
               type="submit"
-              class="w-full bg-accent-500 text-white py-3.5 px-6 rounded-lg font-bold text-lg hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/25"
+              class="w-full bg-accent-500 text-white py-3.5 px-6 font-bold text-lg hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/25"
             >
               התקשרו אליי
             </button>
@@ -104,7 +104,7 @@ const email = 'info@fix-pro.co.il';
           <button
             type="button"
             id="hero-whatsapp-btn"
-            class="w-full mt-4 flex items-center justify-center gap-2 bg-green-500 text-white py-3 px-6 rounded-lg font-bold hover:bg-green-600 transition-colors"
+            class="w-full mt-4 flex items-center justify-center gap-2 bg-green-500 text-white py-3 px-6 font-bold hover:bg-green-600 transition-colors"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -120,13 +120,13 @@ const email = 'info@fix-pro.co.il';
     </div>
   </div>
 
-  <!-- Contact Info Bar - Below Hero Content -->
-  <div class="relative z-10 bg-brand-700/80 backdrop-blur-sm border-t border-white/10">
+  <!-- Contact Info Bar - Below Hero Content - Sharp corners -->
+  <div class="relative z-10 bg-brand-700 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-white/10">
         <!-- Phone -->
         <a href="tel:+972554329235" class="flex items-center justify-center gap-4 py-5 hover:bg-white/5 transition-colors">
-          <div class="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
@@ -139,7 +139,7 @@ const email = 'info@fix-pro.co.il';
 
         <!-- Email -->
         <a href="mailto:{email}" class="flex items-center justify-center gap-4 py-5 hover:bg-white/5 transition-colors">
-          <div class="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
@@ -152,7 +152,7 @@ const email = 'info@fix-pro.co.il';
 
         <!-- Location -->
         <div class="flex items-center justify-center gap-4 py-5">
-          <div class="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
@@ -192,7 +192,7 @@ const email = 'info@fix-pro.co.il';
       // Show success message
       form.innerHTML = `
         <div class="text-center py-8">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div class="w-16 h-16 bg-green-100 flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
