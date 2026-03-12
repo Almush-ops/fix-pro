@@ -262,9 +262,9 @@ const phoneHref = 'tel:+972554329235';
           console.error('Webhook error:', error);
         }
 
-        // Then open WhatsApp
-        const message = encodeURIComponent('שלום, אשמח לקבל הצעת מחיר.');
-        window.open(`https://wa.me/972554329235?text=${message}`, '_blank');
+        // Then open WhatsApp (partner's number)
+        const message = encodeURIComponent('שלום, פונה מאתר פיקס פרו. אשמח לקבל הצעת מחיר.');
+        window.open(`https://wa.me/972523772236?text=${message}`, '_blank');
 
         // Close popup
         whatsappPopup?.classList.add('hidden');
