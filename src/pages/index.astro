@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCardForm from '../components/HeroCardForm.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import PriceHighlight from '../components/PriceHighlight.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const title = 'טכנאי מזגנים, אינסטלטור והנדימן בחיפה והקריות';
+const description = 'פיקס פרו - שירות מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות. 15+ שנות ניסיון, מחיר שקוף, הגעה תוך שעתיים. ניקוי מיני מרכזי ב-450₪ בלבד.';
+
+// Organization schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://fix-pro.co.il/#organization',
+  name: 'פיקס פרו',
+  alternateName: 'Fix Pro',
+  description: 'שירותי מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות',
+  url: 'https://fix-pro.co.il',
+  telephone: '+972-55-432-9235',
+  areaServed: [
+    { '@type': 'City', name: 'חיפה' },
+    { '@type': 'City', name: 'קריית ביאליק' },
+    { '@type': 'City', name: 'קריית מוצקין' },
+    { '@type': 'City', name: 'קריית ים' },
+    { '@type': 'City', name: 'קריית אתא' },
+    { '@type': 'City', name: 'נשר' },
+    { '@type': 'City', name: 'טבעון' },
+    { '@type': 'City', name: 'זכרון יעקב' },
+  ],
+  serviceType: ['מיזוג אוויר', 'אינסטלציה', 'הנדימן'],
+  priceRange: '₪₪',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '08:00',
+    closes: '20:00',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'חיפה',
+    addressRegion: 'חיפה',
+    addressCountry: 'IL',
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero with Lead Form -->
+  <HeroCardForm />
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- Services Grid -->
+  <ServicesGrid />
+
+  <!-- Price Highlight -->
+  <PriceHighlight />
+
+  <!-- Process Steps -->
+  <ProcessSteps />
+
+  <!-- FAQ -->
+  <FAQ />
+
+  <!-- CTA Banner -->
+  <CTASection />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+</BaseLayout>

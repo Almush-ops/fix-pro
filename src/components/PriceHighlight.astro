@@ -1,0 +1,77 @@
+---
+interface Props {
+  price?: string;
+  originalPrice?: string;
+  title?: string;
+  subtitle?: string;
+  features?: string[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  price = '450₪',
+  originalPrice = '600-700₪',
+  title = 'ניקוי מזגן מיני מרכזי',
+  subtitle = 'מבצע מיוחד!',
+  features = [
+    'פירוק וניקוי מלא',
+    'ניקוי פילטרים',
+    'בדיקת תקינות',
+    'אחריות על העבודה',
+  ],
+  ctaText = 'הזמינו עכשיו',
+  ctaHref = '#contact',
+} = Astro.props;
+---
+
+<section class="py-12 md:py-16 bg-surface">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
+      <div class="grid md:grid-cols-2">
+        <!-- Content -->
+        <div class="p-6 md:p-8 lg:p-10">
+          <span class="inline-block bg-accent-500 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">
+            {subtitle}
+          </span>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-2">
+            {title}
+          </h2>
+          <p class="text-muted mb-6">
+            במקום <span class="line-through">{originalPrice}</span> בשוק
+          </p>
+
+          <ul class="space-y-3 mb-6">
+            {features.map((feature) => (
+              <li class="flex items-center gap-2 text-dark">
+                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={ctaHref}
+            class="inline-flex items-center gap-2 bg-accent-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/25"
+          >
+            {ctaText}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Price -->
+        <div class="bg-brand-600 p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center text-center">
+          <span class="text-white/70 text-lg mb-2">רק</span>
+          <span class="text-5xl md:text-6xl font-heading font-bold text-white mb-2">
+            {price}
+          </span>
+          <span class="text-white/70">כולל מע"מ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

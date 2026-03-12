@@ -1,0 +1,100 @@
+---
+const currentYear = new Date().getFullYear();
+const phone = '055-432-9235';
+const phoneHref = 'tel:+972554329235';
+
+const services = [
+  { label: 'מיזוג אוויר', href: '/services/air-conditioning/' },
+  { label: 'אינסטלציה', href: '/services/plumbing/' },
+  { label: 'הנדימן', href: '/services/handyman/' },
+];
+
+const areas = [
+  { label: 'חיפה', href: '/areas/haifa/' },
+  { label: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+  { label: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+  { label: 'קריית ים', href: '/areas/kiryat-yam/' },
+];
+
+const links = [
+  { label: 'אודות', href: '/about/' },
+  { label: 'מחירון', href: '/pricing/' },
+  { label: 'צור קשר', href: '/contact/' },
+];
+---
+
+<footer class="bg-dark text-white/80">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <h3 class="text-white text-xl font-heading font-bold mb-4">פיקס פרו</h3>
+        <p class="text-sm text-white/60 mb-4 leading-relaxed">
+          מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות.
+          שירות מהיר, מחיר שקוף, הגעה תוך שעתיים.
+        </p>
+        <a
+          href={phoneHref}
+          class="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-semibold transition-colors"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          {phone}
+        </a>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">שירותים</h4>
+        <ul class="space-y-2 text-sm">
+          {services.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-white transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Areas -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">אזורי שירות</h4>
+        <ul class="space-y-2 text-sm">
+          {areas.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-white transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">קישורים</h4>
+        <ul class="space-y-2 text-sm">
+          {links.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-white transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/50">
+      <p>&copy; {currentYear} פיקס פרו. כל הזכויות שמורות.</p>
+      <div class="flex gap-4">
+        <a href="/accessibility/" class="hover:text-white transition-colors">הצהרת נגישות</a>
+        <a href="/privacy/" class="hover:text-white transition-colors">מדיניות פרטיות</a>
+        <a href="/terms/" class="hover:text-white transition-colors">תנאי שימוש</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,132 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs?: FAQItem[];
+  includeSchema?: boolean;
+}
+
+const {
+  title = 'שאלות נפוצות',
+  subtitle = 'תשובות לשאלות הנפוצות ביותר',
+  faqs = [
+    {
+      question: 'כמה עולה ניקוי מזגן?',
+      answer: 'ניקוי מזגן עילי מתחיל מ-150₪. ניקוי מיני מרכזי ב-450₪ בלבד (במקום 600-700₪ בשוק). המחיר כולל פילטרים ובדיקה מקיפה.',
+    },
+    {
+      question: 'כמה זמן לוקח לתקן מזגן?',
+      answer: 'רוב התיקונים לוקחים בין שעה לשעתיים. במקרים מורכבים יותר, נעדכן אתכם מראש על משך הזמן הצפוי.',
+    },
+    {
+      question: 'האם יש אחריות על העבודה?',
+      answer: 'כן! אנחנו נותנים אחריות על כל עבודה שאנחנו מבצעים. אם משהו לא עובד כמו שצריך - אנחנו חוזרים לתקן ללא עלות.',
+    },
+    {
+      question: 'באילו אזורים אתם עובדים?',
+      answer: 'אנחנו מספקים שירות בכל אזור חיפה והקריות: חיפה, קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא, נשר, טבעון וזכרון יעקב.',
+    },
+    {
+      question: 'האם אתם עובדים בשבת?',
+      answer: 'אנחנו זמינים לקריאות חירום 24/7, כולל שבתות וחגים. לעבודות שאינן דחופות, אנחנו עובדים בימים א-ה.',
+    },
+    {
+      question: 'מה ההבדל בין ניקוי רגיל לניקוי מיני מרכזי?',
+      answer: 'ניקוי רגיל מתאים למזגן עילי רגיל. ניקוי מיני מרכזי כולל פירוק מלא של היחידה, ניקוי כל החלקים כולל המאייד, והרכבה מחדש - זה תהליך יסודי יותר.',
+    },
+  ],
+  includeSchema = true,
+} = Astro.props;
+
+// Generate FAQ schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer.replace(/<[^>]*>/g, ''), // Strip HTML for schema
+    },
+  })),
+};
+---
+
+<section class="py-16 md:py-20 bg-surface">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">{title}</h2>
+      <p class="text-muted">{subtitle}</p>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, index) => (
+        <details class="group bg-white rounded-lg border border-border overflow-hidden">
+          <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer list-none hover:bg-brand-50/50 transition-colors">
+            <span class="font-medium text-dark pe-4">{faq.question}</span>
+            <svg
+              class="w-5 h-5 text-muted shrink-0 transition-transform group-open:rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="accordion-body">
+            <div class="px-4 md:px-5 pb-4 md:pb-5 text-muted leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+{includeSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}
+
+<script>
+  // Smooth accordion animation
+  document.querySelectorAll('details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector('.accordion-body') as HTMLElement;
+
+    if (!summary || !content) return;
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (details.open) {
+        // Closing
+        content.style.height = content.scrollHeight + 'px';
+        requestAnimationFrame(() => {
+          content.style.height = '0';
+        });
+        content.addEventListener('transitionend', () => {
+          details.open = false;
+          content.style.height = '';
+        }, { once: true });
+      } else {
+        // Opening
+        details.open = true;
+        const height = content.scrollHeight;
+        content.style.height = '0';
+        requestAnimationFrame(() => {
+          content.style.height = height + 'px';
+        });
+        content.addEventListener('transitionend', () => {
+          content.style.height = '';
+        }, { once: true });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,77 @@
+---
+interface Step {
+  number: number;
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  steps?: Step[];
+}
+
+const {
+  title = 'איך זה עובד?',
+  subtitle = 'תהליך פשוט ושקוף מההתחלה ועד הסוף',
+  steps = [
+    {
+      number: 1,
+      icon: '📞',
+      title: 'התקשרו או שלחו WhatsApp',
+      description: 'ספרו לנו במה אתם צריכים עזרה',
+    },
+    {
+      number: 2,
+      icon: '🗓️',
+      title: 'קביעת מועד',
+      description: 'נתאם מועד שמתאים לכם',
+    },
+    {
+      number: 3,
+      icon: '🔧',
+      title: 'הגעה ובדיקה',
+      description: 'נגיע, נבדוק ונציע מחיר מראש',
+    },
+    {
+      number: 4,
+      icon: '✅',
+      title: 'ביצוע ואחריות',
+      description: 'נבצע את העבודה עם אחריות מלאה',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">{title}</h2>
+      <p class="text-muted max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-8">
+      {steps.map((step, index) => (
+        <div class="relative text-center">
+          {/* Connector line (hidden on mobile and last item) */}
+          {index < steps.length - 1 && (
+            <div class="hidden md:block absolute top-8 start-1/2 w-full h-0.5 bg-brand-100" />
+          )}
+
+          <div class="relative z-10">
+            <div class="w-16 h-16 mx-auto bg-brand-50 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md">
+              <span class="text-2xl">{step.icon}</span>
+            </div>
+            <div class="absolute -top-1 -end-1 w-6 h-6 bg-brand-600 rounded-full text-white text-sm font-bold flex items-center justify-center">
+              {step.number}
+            </div>
+          </div>
+
+          <h3 class="text-lg font-heading font-bold text-dark mb-2">{step.title}</h3>
+          <p class="text-muted text-sm">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

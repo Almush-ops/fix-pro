@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'אודות פיקס פרו';
+const description = 'הכירו את גל לוגסי - טכנאי מזגנים, אינסטלטור והנדימן מנוסה עם 15+ שנות ניסיון בחיפה והקריות.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-brand-50 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
+        אודות פיקס פרו
+      </h1>
+      <p class="text-lg text-muted max-w-2xl mx-auto">
+        שירות מקצועי ואמין לבית ולעסק בחיפה והקריות
+      </p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose max-w-none">
+        <h2>מי אנחנו</h2>
+        <p>
+          פיקס פרו הוקם על ידי גל לוגסי, טכנאי מזגנים ואינסטלטור מוסמך עם למעלה מ-15 שנות ניסיון בתחום.
+          אנחנו מספקים שירותי מיזוג אוויר, אינסטלציה והנדימן לבתים ועסקים בכל אזור חיפה והקריות.
+        </p>
+
+        <h2>הגישה שלנו</h2>
+        <p>
+          אנחנו מאמינים בשירות שקוף ואמין. לכן, אנחנו תמיד נותנים מחיר מראש - לפני תחילת העבודה, ללא הפתעות.
+          הגעה תוך שעתיים, עבודה מקצועית, ואחריות מלאה על כל תיקון.
+        </p>
+
+        <h2>למה לבחור בנו?</h2>
+        <ul>
+          <li>15+ שנות ניסיון מקצועי</li>
+          <li>מחיר שקוף מראש - בלי הפתעות</li>
+          <li>הגעה מהירה תוך שעתיים</li>
+          <li>זמינות 24/7 לקריאות חירום</li>
+          <li>אחריות על כל עבודה</li>
+          <li>שירות אישי ומקצועי</li>
+        </ul>
+
+        <h2>אזורי שירות</h2>
+        <p>
+          אנחנו מספקים שירות בכל אזור חיפה והקריות, כולל: חיפה, קריית ביאליק, קריית מוצקין,
+          קריית ים, קריית אתא, נשר, טבעון וזכרון יעקב.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection />
+</BaseLayout>

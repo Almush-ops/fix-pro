@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const title = 'צור קשר';
+const description = 'צרו קשר עם פיקס פרו - שירותי מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות. טלפון: 055-432-9235';
+
+const phone = '055-432-9235';
+const phoneHref = 'tel:+972554329235';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-brand-50 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
+        צור קשר
+      </h1>
+      <p class="text-lg text-muted max-w-2xl mx-auto">
+        נשמח לעזור! השאירו פרטים או התקשרו ישירות
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Options -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-dark mb-6">פרטי התקשרות</h2>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-dark mb-1">טלפון</h3>
+                <a href={phoneHref} class="text-brand-600 hover:underline text-lg">{phone}</a>
+                <p class="text-muted text-sm mt-1">זמינים א'-ה' 08:00-20:00, 24/7 לחירום</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-dark mb-1">WhatsApp</h3>
+                <button id="contact-whatsapp" class="text-green-600 hover:underline text-lg">שליחת הודעה</button>
+                <p class="text-muted text-sm mt-1">תשובה מהירה בכל שעה</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-dark mb-1">אזורי שירות</h3>
+                <p class="text-muted">חיפה, קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא, נשר, טבעון, זכרון יעקב</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-surface rounded-2xl p-6 md:p-8">
+          <h2 class="text-2xl font-heading font-bold text-dark mb-6">השאירו פרטים</h2>
+          <form id="contact-page-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-dark mb-1.5">שם מלא</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-dark placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                placeholder="הכניסו את שמכם"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-dark mb-1.5">טלפון</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                dir="ltr"
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-dark text-right placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                placeholder="050-0000000"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-dark mb-1.5">הודעה</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full px-4 py-3 border border-border rounded-md bg-white text-dark placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-none"
+                placeholder="ספרו לנו במה נוכל לעזור..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-accent-500 text-white py-3.5 rounded-md font-semibold text-lg hover:bg-accent-600 transition-colors"
+            >
+              שליחה
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Contact page form
+  const form = document.getElementById('contact-page-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    const data = {
+      'your-name': formData.get('name'),
+      'phone': formData.get('phone'),
+      'message': formData.get('message') || '',
+      'page-title': 'צור קשר',
+      'website': 'פיקס פרו',
+      'category': 'בעלי מקצוע',
+    };
+
+    try {
+      await fetch('https://hook.eu1.make.com/vafte51w7nn4tmtyejfl46cooalp0aru', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      form.innerHTML = `
+        <div class="text-center py-8">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-dark mb-2">תודה רבה!</h3>
+          <p class="text-muted">קיבלנו את הפרטים ונחזור אליכם בהקדם.</p>
+        </div>
+      `;
+    } catch (error) {
+      console.error('Form error:', error);
+    }
+  });
+
+  // WhatsApp button
+  document.getElementById('contact-whatsapp')?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('open-whatsapp-popup'));
+  });
+</script>

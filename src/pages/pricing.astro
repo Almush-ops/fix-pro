@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PriceHighlight from '../components/PriceHighlight.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'מחירון';
+const description = 'מחירון שירותי מיזוג אוויר, אינסטלציה והנדימן. מחירים שקופים ללא הפתעות. ניקוי מיני מרכזי ב-450₪ בלבד!';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-brand-50 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
+        מחירון
+      </h1>
+      <p class="text-lg text-muted max-w-2xl mx-auto">
+        מחירים שקופים מראש - בלי הפתעות. המחירים להמחשה בלבד ועשויים להשתנות בהתאם למורכבות העבודה.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Price -->
+  <PriceHighlight />
+
+  <!-- Price Tables -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- AC Prices -->
+        <div class="bg-surface rounded-xl p-6">
+          <h2 class="text-xl font-heading font-bold text-dark mb-6 flex items-center gap-2">
+            <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </span>
+            מיזוג אוויר
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">ניקוי מזגן עילי</span>
+              <span class="font-semibold text-brand-600">החל מ-150₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">ניקוי מיני מרכזי</span>
+              <span class="font-semibold text-accent-500">450₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">תיקון מזגן</span>
+              <span class="font-semibold text-brand-600">החל מ-200₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">מילוי גז</span>
+              <span class="font-semibold text-brand-600">החל מ-300₪</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-dark">התקנת מזגן</span>
+              <span class="font-semibold text-brand-600">החל מ-500₪</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Plumbing Prices -->
+        <div class="bg-surface rounded-xl p-6">
+          <h2 class="text-xl font-heading font-bold text-dark mb-6 flex items-center gap-2">
+            <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              </svg>
+            </span>
+            אינסטלציה
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">תיקון נזילה</span>
+              <span class="font-semibold text-brand-600">החל מ-150₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">פתיחת סתימה</span>
+              <span class="font-semibold text-brand-600">החל מ-200₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">החלפת ברז</span>
+              <span class="font-semibold text-brand-600">החל מ-180₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">התקנת אסלה</span>
+              <span class="font-semibold text-brand-600">החל מ-350₪</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-dark">תיקון דוד שמש</span>
+              <span class="font-semibold text-brand-600">החל מ-250₪</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Handyman Prices -->
+        <div class="bg-surface rounded-xl p-6">
+          <h2 class="text-xl font-heading font-bold text-dark mb-6 flex items-center gap-2">
+            <span class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+              </svg>
+            </span>
+            הנדימן
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">תליית טלוויזיה</span>
+              <span class="font-semibold text-brand-600">החל מ-150₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">הרכבת רהיטים</span>
+              <span class="font-semibold text-brand-600">החל מ-100₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">תיקון דלת</span>
+              <span class="font-semibold text-brand-600">החל מ-120₪</span>
+            </li>
+            <li class="flex justify-between items-center pb-3 border-b border-border">
+              <span class="text-dark">התקנת מדפים</span>
+              <span class="font-semibold text-brand-600">החל מ-80₪</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span class="text-dark">צביעה (לשעה)</span>
+              <span class="font-semibold text-brand-600">החל מ-100₪</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-center text-muted text-sm mt-8">
+        * המחירים להמחשה בלבד. המחיר הסופי ייקבע לאחר בדיקה והערכה במקום.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection />
+</BaseLayout>
