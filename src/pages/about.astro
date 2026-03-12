@@ -1,59 +1,120 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 import CTASection from '../components/CTASection.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const title = 'אודות פיקס פרו';
 const description = 'הכירו את גל לוגסי - טכנאי מזגנים, אינסטלטור והנדימן מנוסה עם 15+ שנות ניסיון בחיפה והקריות.';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'אודות' },
+];
+
+const stats = [
+  { value: '15+', label: 'שנות ניסיון' },
+  { value: '5,000+', label: 'לקוחות מרוצים' },
+  { value: '24/7', label: 'זמינות לחירום' },
+  { value: '2 שעות', label: 'זמן הגעה' },
+];
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page Header -->
-  <section class="bg-brand-50 py-16 md:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
-        אודות פיקס פרו
-      </h1>
-      <p class="text-lg text-muted max-w-2xl mx-auto">
-        שירות מקצועי ואמין לבית ולעסק בחיפה והקריות
-      </p>
+  <!-- Page Hero -->
+  <PageHero
+    title="אודות פיקס פרו"
+    subtitle="שירות מקצועי ואמין לבית ולעסק בחיפה והקריות"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <!-- Stats Row -->
+  <section class="bg-brand-600 py-8 md:py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-2xl md:text-3xl font-heading font-bold text-white mb-1">
+              {stat.value}
+            </div>
+            <div class="text-sm text-white/70">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- About Content -->
   <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="prose max-w-none">
-        <h2>מי אנחנו</h2>
-        <p>
-          פיקס פרו הוקם על ידי גל לוגסי, טכנאי מזגנים ואינסטלטור מוסמך עם למעלה מ-15 שנות ניסיון בתחום.
-          אנחנו מספקים שירותי מיזוג אוויר, אינסטלציה והנדימן לבתים ועסקים בכל אזור חיפה והקריות.
-        </p>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div>
+          <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">מי אנחנו</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+            בעל מקצוע מנוסה עם תשוקה לשירות
+          </h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              פיקס פרו הוקם על ידי גל לוגסי, טכנאי מזגנים ואינסטלטור מוסמך עם למעלה מ-15 שנות ניסיון בתחום.
+              אנחנו מספקים שירותי מיזוג אוויר, אינסטלציה והנדימן לבתים ועסקים בכל אזור חיפה והקריות.
+            </p>
+            <p>
+              אנחנו מאמינים בשירות שקוף ואמין. לכן, אנחנו תמיד נותנים מחיר מראש - לפני תחילת העבודה, ללא הפתעות.
+              הגעה תוך שעתיים, עבודה מקצועית, ואחריות מלאה על כל תיקון.
+            </p>
+          </div>
+        </div>
 
-        <h2>הגישה שלנו</h2>
-        <p>
-          אנחנו מאמינים בשירות שקוף ואמין. לכן, אנחנו תמיד נותנים מחיר מראש - לפני תחילת העבודה, ללא הפתעות.
-          הגעה תוך שעתיים, עבודה מקצועית, ואחריות מלאה על כל תיקון.
-        </p>
+        <!-- Features -->
+        <div class="bg-surface p-8">
+          <h3 class="text-xl font-heading font-bold text-dark mb-6">למה לבחור בנו?</h3>
+          <ul class="space-y-4">
+            {[
+              '15+ שנות ניסיון מקצועי',
+              'מחיר שקוף מראש - בלי הפתעות',
+              'הגעה מהירה תוך שעתיים',
+              'זמינות 24/7 לקריאות חירום',
+              'אחריות על כל עבודה',
+              'שירות אישי ומקצועי',
+            ].map((item) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-dark">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <h2>למה לבחור בנו?</h2>
-        <ul>
-          <li>15+ שנות ניסיון מקצועי</li>
-          <li>מחיר שקוף מראש - בלי הפתעות</li>
-          <li>הגעה מהירה תוך שעתיים</li>
-          <li>זמינות 24/7 לקריאות חירום</li>
-          <li>אחריות על כל עבודה</li>
-          <li>שירות אישי ומקצועי</li>
-        </ul>
-
-        <h2>אזורי שירות</h2>
-        <p>
-          אנחנו מספקים שירות בכל אזור חיפה והקריות, כולל: חיפה, קריית ביאליק, קריית מוצקין,
-          קריית ים, קריית אתא, נשר, טבעון וזכרון יעקב.
-        </p>
+  <!-- Service Areas -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-8">
+        משרתים את כל אזור חיפה והקריות
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        {['חיפה', 'קריית ביאליק', 'קריית מוצקין', 'קריית ים', 'קריית אתא', 'נשר', 'טבעון', 'זכרון יעקב'].map((city) => (
+          <span class="px-4 py-2 bg-white text-dark font-medium shadow-sm">
+            {city}
+          </span>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <CTASection />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
 </BaseLayout>

@@ -1,0 +1,87 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  breadcrumbs: Array<{ label: string; href?: string }>;
+  backgroundImage?: string;
+  showCTA?: boolean;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  subtitle,
+  breadcrumbs,
+  backgroundImage = '/images/hero/hero-hvac-pro.webp',
+  showCTA = false,
+  ctaText = 'השאירו פרטים',
+  ctaHref = '#contact',
+} = Astro.props;
+
+const phone = '055-432-9235';
+---
+
+<section class="relative min-h-[40vh] flex items-center overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img
+      src={backgroundImage}
+      alt=""
+      class="w-full h-full object-cover"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-l from-brand-700/95 via-brand-700/90 to-brand-700/80"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 w-full">
+    <!-- Breadcrumbs -->
+    <div class="mb-6">
+      <Breadcrumbs items={breadcrumbs} variant="light" />
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight mb-4">
+      {title}
+    </h1>
+
+    {subtitle && (
+      <p class="text-lg md:text-xl text-white/80 max-w-2xl mb-8">
+        {subtitle}
+      </p>
+    )}
+
+    {showCTA && (
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={ctaHref}
+          class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-8 py-4 text-lg font-bold hover:bg-accent-600 transition-colors shadow-xl"
+        >
+          {ctaText}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </a>
+        <a
+          href="tel:+972554329235"
+          class="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 text-lg font-bold hover:bg-white hover:text-dark transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          {phone}
+        </a>
+      </div>
+    )}
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-0 end-0 w-64 h-64 bg-accent-500/10 blur-3xl"></div>
+  <div class="absolute bottom-0 start-0 w-96 h-96 bg-white/5 blur-3xl"></div>
+</section>

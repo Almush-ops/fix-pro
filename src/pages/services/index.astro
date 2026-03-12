@@ -1,24 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
 import ServicesGrid from '../../components/ServicesGrid.astro';
 import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
 
 const title = 'השירותים שלנו';
 const description = 'שירותי מיזוג אוויר, אינסטלציה והנדימן מקצועיים בחיפה והקריות. ניקוי מזגנים, תיקון נזילות, עבודות תחזוקה ועוד.';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'שירותים' },
+];
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page Header -->
-  <section class="bg-brand-50 py-16 md:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
-        השירותים שלנו
-      </h1>
-      <p class="text-lg text-muted max-w-2xl mx-auto">
-        כל מה שצריך לבית ולעסק - במקום אחד, עם שירות מקצועי ואמין
-      </p>
-    </div>
-  </section>
+  <!-- Page Hero -->
+  <PageHero
+    title="השירותים שלנו"
+    subtitle="כל מה שצריך לבית ולעסק - במקום אחד, עם שירות מקצועי ואמין"
+    breadcrumbs={breadcrumbs}
+  />
 
   <!-- Services Grid -->
   <ServicesGrid title="" subtitle="" />
@@ -32,120 +34,152 @@ const description = 'שירותי מיזוג אוויר, אינסטלציה וה
 
       <div class="grid md:grid-cols-2 gap-8">
         <!-- AC Services -->
-        <div class="bg-white rounded-xl p-6 border border-border">
+        <div class="bg-white p-6 border border-border shadow-sm">
           <h3 class="text-xl font-heading font-bold text-dark mb-4">מיזוג אוויר</h3>
           <ul class="space-y-2 text-muted">
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               ניקוי מזגן עילי
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               ניקוי מיני מרכזי (450₪ בלבד!)
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               תיקון מזגנים
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               התקנת מזגנים
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               מילוי גז
             </li>
           </ul>
         </div>
 
         <!-- Plumbing Services -->
-        <div class="bg-white rounded-xl p-6 border border-border">
+        <div class="bg-white p-6 border border-border shadow-sm">
           <h3 class="text-xl font-heading font-bold text-dark mb-4">אינסטלציה</h3>
           <ul class="space-y-2 text-muted">
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               תיקון נזילות
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               פתיחת סתימות
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               החלפת ברזים
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               התקנת אסלות וכיורים
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </div>
               תיקון דודי שמש
             </li>
           </ul>
         </div>
 
         <!-- Handyman Services -->
-        <div class="bg-white rounded-xl p-6 border border-border md:col-span-2">
+        <div class="bg-white p-6 border border-border shadow-sm md:col-span-2">
           <h3 class="text-xl font-heading font-bold text-dark mb-4">הנדימן</h3>
           <div class="grid sm:grid-cols-2 gap-4">
             <ul class="space-y-2 text-muted">
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 תליית טלוויזיות
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 הרכבת רהיטים
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 תיקון דלתות וחלונות
               </li>
             </ul>
             <ul class="space-y-2 text-muted">
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 התקנת מדפים
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 צביעה ומריחת שפכטל
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
+                <div class="w-5 h-5 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
                 עבודות תחזוקה כלליות
               </li>
             </ul>
@@ -157,4 +191,7 @@ const description = 'שירותי מיזוג אוויר, אינסטלציה וה
 
   <!-- CTA -->
   <CTASection />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
 </BaseLayout>
