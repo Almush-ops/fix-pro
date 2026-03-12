@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'ניקוי מזגנים בחיפה והקריות | מיני מרכזי ב-450₪';
+const description = 'ניקוי מזגנים מקצועי בחיפה והקריות. ניקוי מזגן עילי מ-150₪, מיני מרכזי ב-450₪ בלבד. כולל חיטוי וניקוי פילטרים. הגעה תוך שעתיים!';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'מיזוג אוויר', href: '/services/air-conditioning/' },
+  { label: 'ניקוי מזגנים' },
+];
+
+const cleaningTypes = [
+  {
+    title: 'ניקוי מזגן עילי',
+    description: 'ניקוי יסודי של מזגן עילי (Split) - ניקוי פילטרים, גוף המזגן הפנימי והיחידה החיצונית. כולל חיטוי נגד חיידקים ועובש.',
+    price: '150₪',
+    duration: '30-45 דקות',
+    includes: ['ניקוי פילטרים', 'ניקוי גוף פנימי', 'ניקוי יחידה חיצונית', 'חיטוי ומניעת ריחות'],
+  },
+  {
+    title: 'ניקוי מיני מרכזי',
+    description: 'ניקוי מקצועי ומקיף של מזגן מיני מרכזי - פירוק מלא של היחידה, ניקוי המאייד, הפילטרים והמפוח. מחזיר את המזגן לביצועים מיטביים.',
+    price: '450₪',
+    duration: '1-2 שעות',
+    includes: ['פירוק מלא', 'ניקוי מאייד', 'ניקוי מפוח', 'ניקוי פילטרים', 'חיטוי מקיף', 'הרכבה ובדיקה'],
+    highlight: true,
+  },
+  {
+    title: 'ניקוי מזגן מרכזי',
+    description: 'ניקוי מערכות מיזוג מרכזיות לעסקים ובתים גדולים. כולל ניקוי תעלות, יחידות פנימיות ויחידה חיצונית.',
+    price: 'לפי הצעה',
+    duration: 'תלוי בגודל',
+    includes: ['בדיקת המערכת', 'ניקוי כל היחידות', 'ניקוי תעלות', 'חיטוי', 'דו"ח תחזוקה'],
+  },
+];
+
+const faqs = [
+  {
+    question: 'כמה פעמים בשנה צריך לנקות מזגן?',
+    answer: 'מומלץ לנקות את המזגן פעמיים בשנה - לפני תחילת עונת הקיץ (אפריל-מאי) ולפני החורף (אוקטובר-נובמבר). אם המזגן עובד הרבה, או אם יש אלרגיות או בעיות נשימה במשפחה - כדאי לנקות בתדירות גבוהה יותר, אפילו כל 3-4 חודשים.',
+  },
+  {
+    question: 'מה ההבדל בין ניקוי עילי לניקוי מיני מרכזי?',
+    answer: 'ניקוי מזגן עילי הוא פשוט יחסית ולוקח כחצי שעה - ניקוי פילטרים וגוף המזגן. ניקוי מיני מרכזי מורכב יותר ודורש פירוק של היחידה, ניקוי המאייד (coil) והמפוח מבפנים. זו עבודה של 1-2 שעות שדורשת מיומנות ומניבה תוצאות משמעותיות יותר.',
+  },
+  {
+    question: 'למה המזגן שלי מוציא ריח רע?',
+    answer: 'ריח רע מהמזגן נגרם בדרך כלל מעובש וחיידקים שמתפתחים בתוך היחידה, במיוחד על המאייד הלח. ניקוי מקצועי עם חיטוי יפתור את הבעיה. חשוב לטפל בזה כי זיהום האוויר יכול להחמיר אלרגיות ובעיות נשימה.',
+  },
+  {
+    question: 'האם ניקוי המזגן ישפר את הקירור?',
+    answer: 'בהחלט! מזגן מלוכלך עובד קשה יותר ומקרר פחות. פילטרים סתומים מפחיתים את זרימת האוויר, ואבנית על המאייד פוגעת בהעברת החום. אחרי ניקוי מקצועי הקירור ישתפר משמעותית, והחשבון חשמל ירד.',
+  },
+  {
+    question: 'כמה עולה ניקוי מיני מרכזי בשוק?',
+    answer: 'בשוק, ניקוי מיני מרכזי מקצועי עולה בדרך כלל בין 600-800₪. אנחנו מציעים את אותו שירות ב-450₪ בלבד - כי אנחנו מאמינים שתחזוקת מזגנים צריכה להיות נגישה לכולם.',
+  },
+  {
+    question: 'מה לעשות אם יש נזילה מהמזגן?',
+    answer: 'נזילה מהמזגן היא בדרך כלל סימן לסתימה בניקוז. לפעמים ניקוי פשוט של צינור הניקוז יפתור את הבעיה. אם הנזילה ממשיכה אחרי ניקוי - יכול להיות שיש בעיה במשאבה או בהתקנה. אנחנו מאבחנים ומטפלים בכל סוגי הנזילות.',
+  },
+];
+
+const cleaningSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'ניקוי מזגנים',
+  description: 'שירות ניקוי מזגנים מקצועי בחיפה והקריות - עילי, מיני מרכזי ומרכזי',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'פיקס פרו',
+    telephone: '+972-55-432-9235',
+    areaServed: 'חיפה והקריות',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'ניקוי מזגן עילי',
+      price: '150',
+      priceCurrency: 'ILS',
+    },
+    {
+      '@type': 'Offer',
+      name: 'ניקוי מיני מרכזי',
+      price: '450',
+      priceCurrency: 'ILS',
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero with Price Highlight -->
+  <PageHero
+    title="ניקוי מזגנים בחיפה והקריות"
+    subtitle="ניקוי מקצועי שמחזיר את המזגן לביצועים מיטביים. מיני מרכזי ב-450₪ בלבד!"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/air-conditioning.webp"
+  />
+
+  <!-- Price Highlight Banner -->
+  <section class="bg-accent-500 py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-white text-center md:text-start">
+        <div class="flex items-center gap-4">
+          <span class="text-4xl font-heading font-bold">450₪</span>
+          <div>
+            <p class="font-bold">ניקוי מיני מרכזי</p>
+            <p class="text-white/80 text-sm">במקום 600-700₪ בשוק</p>
+          </div>
+        </div>
+        <div class="hidden md:block w-px h-12 bg-white/30"></div>
+        <div class="flex items-center gap-4">
+          <span class="text-4xl font-heading font-bold">150₪</span>
+          <div>
+            <p class="font-bold">ניקוי מזגן עילי</p>
+            <p class="text-white/80 text-sm">כולל חיטוי ופילטרים</p>
+          </div>
+        </div>
+        <a href="tel:0554329235" class="bg-white text-accent-500 px-6 py-3 font-bold hover:bg-accent-50 transition-colors">
+          055-432-9235
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-muted">
+        <p class="text-lg leading-relaxed">
+          ניקוי מזגנים הוא חלק חיוני מתחזוקת המזגן שמשפיע ישירות על איכות האוויר בבית, יעילות הקירור והצריכת החשמל.
+          מזגן מלוכלך לא רק מקרר פחות - הוא גם מפיץ אבק, עובש וחיידקים באוויר שאתם נושמים.
+        </p>
+        <p>
+          אנחנו מספקים שירות ניקוי מזגנים מקצועי בכל אזור חיפה והקריות - קריית ביאליק, קריית מוצקין, קריית ים,
+          קריית אתא, נשר, טבעון וזכרון יעקב. הגעה מהירה תוך שעתיים, מחיר שקוף מראש, ועבודה מקצועית עם אחריות.
+        </p>
+        <p>
+          המתמחיות שלנו היא ניקוי מזגנים מיני מרכזיים - עבודה שדורשת פירוק מלא של היחידה וניקוי יסודי של כל החלקים.
+          בעוד חברות אחרות גובות 600-800₪ על השירות הזה, אנחנו מציעים אותו ב-450₪ בלבד - בלי להתפשר על האיכות.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cleaning Types -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">סוגי ניקוי</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">איזה סוג ניקוי מתאים לכם?</h2>
+        <p class="text-muted max-w-2xl mx-auto">בחרו את סוג הניקוי המתאים למזגן שלכם</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {cleaningTypes.map((type) => (
+          <div class={`bg-white p-6 shadow-sm hover:shadow-lg transition-shadow ${type.highlight ? 'ring-2 ring-accent-500' : ''}`}>
+            {type.highlight && (
+              <div class="flex justify-between items-start mb-4">
+                <span class="inline-block bg-accent-500 text-white text-xs font-bold px-3 py-1">
+                  הכי פופולרי
+                </span>
+                <span class="text-xs text-muted">חסכון של 150-350₪</span>
+              </div>
+            )}
+            <h3 class="text-xl font-heading font-bold text-dark mb-2">{type.title}</h3>
+            <p class="text-muted text-sm mb-4">{type.description}</p>
+
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class={`text-2xl font-heading font-bold ${type.highlight ? 'text-accent-500' : 'text-brand-600'}`}>
+                {type.price}
+              </span>
+              <span class="text-muted text-sm">• {type.duration}</span>
+            </div>
+
+            <div class="border-t border-border pt-4">
+              <p class="text-sm font-semibold text-dark mb-2">כולל:</p>
+              <ul class="space-y-1">
+                {type.includes.map((item) => (
+                  <li class="flex items-center gap-2 text-sm text-muted">
+                    <svg class="w-4 h-4 text-accent-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <a href="#contact" class={`block mt-6 text-center py-3 font-bold transition-colors ${type.highlight ? 'bg-accent-500 text-white hover:bg-accent-600' : 'bg-brand-600 text-white hover:bg-brand-700'}`}>
+              הזמינו עכשיו
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">תהליך העבודה</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">איך מתבצע ניקוי מזגן מקצועי?</h2>
+        <p class="text-muted max-w-2xl mx-auto">תהליך הניקוי שלנו מקיף ויסודי</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-500 mx-auto flex items-center justify-center mb-4">
+            <span class="text-white text-2xl font-heading font-bold">1</span>
+          </div>
+          <h3 class="font-heading font-bold text-dark mb-2">בדיקה ראשונית</h3>
+          <p class="text-muted text-sm">בודקים את מצב המזגן, מזהים בעיות ומסבירים מה הולך להיעשות</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-500 mx-auto flex items-center justify-center mb-4">
+            <span class="text-white text-2xl font-heading font-bold">2</span>
+          </div>
+          <h3 class="font-heading font-bold text-dark mb-2">פירוק וניקוי</h3>
+          <p class="text-muted text-sm">מפרקים את החלקים הנדרשים ומנקים כל פריט בנפרד</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-500 mx-auto flex items-center justify-center mb-4">
+            <span class="text-white text-2xl font-heading font-bold">3</span>
+          </div>
+          <h3 class="font-heading font-bold text-dark mb-2">חיטוי</h3>
+          <p class="text-muted text-sm">מחטאים את כל החלקים נגד חיידקים, עובש וריחות</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-500 mx-auto flex items-center justify-center mb-4">
+            <span class="text-white text-2xl font-heading font-bold">4</span>
+          </div>
+          <h3 class="font-heading font-bold text-dark mb-2">הרכבה ובדיקה</h3>
+          <p class="text-muted text-sm">מרכיבים הכל חזרה, בודקים שהכל עובד ונותנים טיפים לתחזוקה</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When to Clean -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">מתי לנקות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">סימנים שהמזגן צריך ניקוי</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 shadow-sm flex gap-4">
+          <div class="w-12 h-12 bg-red-100 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-dark mb-1">ריח לא נעים</h3>
+            <p class="text-muted text-sm">ריח עובש או ריח מוזר מהמזגן מעיד על הצטברות חיידקים ועובש</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 shadow-sm flex gap-4">
+          <div class="w-12 h-12 bg-red-100 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-dark mb-1">קירור חלש</h3>
+            <p class="text-muted text-sm">אם המזגן עובד אבל לא מקרר כמו פעם - סביר שהפילטרים סתומים</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 shadow-sm flex gap-4">
+          <div class="w-12 h-12 bg-red-100 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-dark mb-1">חשבון חשמל גבוה</h3>
+            <p class="text-muted text-sm">מזגן מלוכלך צורך יותר חשמל כי הוא עובד קשה יותר</p>
+          </div>
+        </div>
+        <div class="bg-white p-6 shadow-sm flex gap-4">
+          <div class="w-12 h-12 bg-red-100 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-dark mb-1">לא נוקה מעל שנה</h3>
+            <p class="text-muted text-sm">אם עבר יותר משנה מהניקוי האחרון - הגיע הזמן לניקוי מקצועי</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas We Cover -->
+  <section class="py-16 md:py-20 bg-brand-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">ניקוי מזגנים בכל חיפה והקריות</h2>
+        <p class="text-white/70">מגיעים לכל האזורים תוך שעתיים</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { name: 'חיפה', href: '/areas/haifa/' },
+          { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+          { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+          { name: 'קריית ים', href: '/areas/kiryat-yam/' },
+          { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
+          { name: 'נשר', href: '/areas/nesher/' },
+          { name: 'טבעון', href: '/areas/tivon/' },
+          { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
+        ].map((area) => (
+          <a
+            href={area.href}
+            class="group bg-white/10 hover:bg-accent-500 p-4 text-center transition-all duration-300"
+          >
+            <div class="flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-accent-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-semibold text-white">{area.name}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות על ניקוי מזגנים"
+    subtitle="תשובות לשאלות הנפוצות ביותר"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="צריכים ניקוי מזגן?"
+    subtitle="התקשרו עכשיו וקבעו ביקור"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(cleaningSchema)} />
+</BaseLayout>
