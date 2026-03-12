@@ -10,18 +10,17 @@ const {
 } = Astro.props;
 
 const phone = '055-432-9235';
-const email = 'info@fix-pro.co.il';
 ---
 
-<section class="relative min-h-[650px] lg:min-h-[750px] overflow-hidden">
-  <!-- Background Image with Dark Navy Overlay -->
+<section class="relative min-h-[600px] lg:min-h-[700px] overflow-hidden">
+  <!-- Background Image with Dark Overlay -->
   <div class="absolute inset-0">
     <img
-      src="/images/hero/gal-ac-install.webp"
-      alt="גל - טכנאי מזגנים מקצועי בעבודה"
-      class="w-full h-full object-cover object-top"
-      width="1200"
-      height="1600"
+      src="/images/hero/hero-hvac-pro.webp"
+      alt="בעל מקצוע מנוסה בעבודה"
+      class="w-full h-full object-cover object-center"
+      width="1920"
+      height="1080"
       loading="eager"
       fetchpriority="high"
     />
@@ -30,10 +29,10 @@ const email = 'info@fix-pro.co.il';
   </div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[500px]">
-      <!-- Content (right side in RTL - over dark overlay) -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[450px]">
+      <!-- Content (right side in RTL) -->
       <div class="text-center lg:text-start order-2 lg:order-1">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight mb-6">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight mb-6">
           בעלי מקצוע <span class="text-accent-500">מנוסים</span><br/>
           באזור שלכם
         </h1>
@@ -42,26 +41,37 @@ const email = 'info@fix-pro.co.il';
           {subtitle}
         </p>
 
-        <!-- CTA Button - Orange, Sharp corners -->
-        <a
-          href="#contact"
-          class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-10 py-4 text-lg font-bold hover:bg-accent-600 transition-colors shadow-xl mb-10"
-        >
-          קבלו הצעת מחיר
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </a>
+        <!-- CTA Buttons - White outlined + Orange solid -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-8 py-4 text-lg font-bold hover:bg-accent-600 transition-colors shadow-xl"
+          >
+            קבלו הצעת מחיר
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </a>
+          <a
+            href="tel:+972554329235"
+            class="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 text-lg font-bold hover:bg-white hover:text-dark transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            {phone}
+          </a>
+        </div>
       </div>
 
-      <!-- Form Card (left side in RTL - floating over image) - Sharp corners -->
+      <!-- Form Card (left side in RTL) -->
       <div class="order-1 lg:order-2">
         <div class="bg-white shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 lg:ms-auto">
           <h2 class="text-xl font-heading font-bold text-dark mb-2 text-center">
             השאירו פרטים ונחזור אליכם
           </h2>
           <p class="text-muted text-sm text-center mb-6">
-            או התקשרו ישירות: <a href="tel:+972554329235" class="text-accent-500 font-semibold hover:underline">{phone}</a>
+            בדרך כלל חוזרים תוך 10 דקות
           </p>
 
           <form id="hero-lead-form" class="space-y-4">
@@ -84,7 +94,7 @@ const email = 'info@fix-pro.co.il';
                 name="phone"
                 required
                 dir="ltr"
-                class="w-full px-4 py-3 border border-border rounded-lg text-dark text-right placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow"
+                class="w-full px-4 py-3 border border-border text-dark text-right placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow"
                 placeholder="050-0000000"
               />
             </div>
@@ -111,56 +121,6 @@ const email = 'info@fix-pro.co.il';
             </svg>
             שלחו הודעת WhatsApp
           </button>
-
-          <p class="text-xs text-muted text-center mt-4">
-            הפרטים יועברו לגל, בעל העסק, ונחזור אליכם בהקדם
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Info Bar - Below Hero Content - Sharp corners -->
-  <div class="relative z-10 bg-brand-700 border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-white/10">
-        <!-- Phone -->
-        <a href="tel:+972554329235" class="flex items-center justify-center gap-4 py-5 hover:bg-white/5 transition-colors">
-          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-white/60 text-sm">התקשרו עכשיו</p>
-            <p class="text-white font-bold">{phone}</p>
-          </div>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:{email}" class="flex items-center justify-center gap-4 py-5 hover:bg-white/5 transition-colors">
-          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-white/60 text-sm">שלחו מייל</p>
-            <p class="text-white font-bold">{email}</p>
-          </div>
-        </a>
-
-        <!-- Location -->
-        <div class="flex items-center justify-center gap-4 py-5">
-          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-white/60 text-sm">אזור שירות</p>
-            <p class="text-white font-bold">חיפה והקריות</p>
-          </div>
         </div>
       </div>
     </div>

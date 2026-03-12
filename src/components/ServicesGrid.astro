@@ -19,19 +19,19 @@ const {
     {
       title: 'מיזוג אוויר',
       description: 'ניקוי, תיקון, התקנה והחלפת מזגנים. שירות מקצועי לכל סוגי המזגנים - עילי, מיני מרכזי ומרכזי.',
-      image: '/images/gallery/gal-hvac-work-1.webp',
+      image: '/images/services/air-conditioning.webp',
       href: '/services/air-conditioning/',
     },
     {
       title: 'אינסטלציה',
       description: 'טיפול בנזילות, סתימות, תיקון צנרת והתקנת אביזרי אמבטיה ומטבח. פתרון מהיר ומקצועי.',
-      image: '/images/gallery/gal-ac-unit-close.webp',
+      image: '/images/services/plumbing.webp',
       href: '/services/plumbing/',
     },
     {
       title: 'הנדימן',
       description: 'עבודות קטנות, תחזוקה, תיקונים ושיפוצים קלים לבית ולעסק. כל מה שצריך במקום אחד.',
-      image: '/images/gallery/gal-hvac-work-2.webp',
+      image: '/images/services/handyman.webp',
       href: '/services/handyman/',
     },
   ],
@@ -73,13 +73,13 @@ const {
               {service.description}
             </p>
 
-            <!-- CTA Button - Orange, Sharp corners -->
+            <!-- Text link with arrow - Electrician style -->
             <a
               href={service.href}
-              class="inline-flex items-center gap-2 bg-accent-500 text-white px-6 py-2.5 font-bold text-sm hover:bg-accent-600 transition-colors"
+              class="inline-flex items-center gap-2 text-accent-500 font-bold text-sm hover:text-accent-600 transition-colors group"
             >
               למידע נוסף
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
               </svg>
             </a>

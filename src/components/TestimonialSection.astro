@@ -1,0 +1,77 @@
+---
+interface Testimonial {
+  quote: string;
+  name: string;
+  location?: string;
+  service?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  testimonials?: Testimonial[];
+}
+
+const {
+  title = 'מה הלקוחות אומרים',
+  subtitle = 'אלפי לקוחות מרוצים באזור חיפה והקריות',
+  testimonials = [
+    {
+      quote: 'גל הגיע תוך שעה, ניקה את המזגן המיני מרכזי באופן מקצועי. המחיר היה שקוף מראש ולא היו הפתעות. ממליץ בחום!',
+      name: 'יוסי כהן',
+      location: 'קריית ביאליק',
+      service: 'ניקוי מיני מרכזי',
+    },
+    {
+      quote: 'נזילה במטבח בשבת בלילה. התקשרתי ותוך שעתיים הבעיה נפתרה. שירות מעולה, מקצועי ואמין.',
+      name: 'רונית לוי',
+      location: 'חיפה',
+      service: 'אינסטלציה',
+    },
+    {
+      quote: 'גל תיקן לנו כמה תקלות קטנות בבית - צירים, מדפים ותיקון קיר. מחיר הוגן ועבודה נקייה.',
+      name: 'דוד אברהם',
+      location: 'קריית מוצקין',
+      service: 'הנדימן',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">המלצות</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">{title}</h2>
+      <p class="text-muted text-lg max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="bg-surface p-6 shadow-lg hover:shadow-xl transition-shadow">
+          <!-- Quote icon -->
+          <div class="w-12 h-12 bg-accent-500 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+
+          <!-- Quote text -->
+          <p class="text-dark leading-relaxed mb-6">"{t.quote}"</p>
+
+          <!-- Author info -->
+          <div class="border-t border-border pt-4">
+            <p class="font-heading font-bold text-dark">{t.name}</p>
+            <div class="flex items-center gap-2 text-sm text-muted">
+              {t.location && <span>{t.location}</span>}
+              {t.location && t.service && <span>•</span>}
+              {t.service && <span>{t.service}</span>}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
