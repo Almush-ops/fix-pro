@@ -2,76 +2,152 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CTASection from '../../components/CTASection.astro';
-import ContactForm from '../../components/ContactForm.astro';
+import { cities } from '../../data/cities';
 
-const title = 'אזורי שירות';
-const description = 'פיקס פרו מספק שירותי מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות. חיפה, קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא, נשר, טבעון, זכרון יעקב.';
+const title = 'אזורי שירות - מיזוג אוויר, אינסטלציה והנדימן | פיקס פרו';
+const description = 'פיקס פרו נותן שירות בחיפה, קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא, נשר, טבעון וזכרון יעקב. ניקוי מזגנים, אינסטלציה, הנדימן - הגעה מהירה, מחיר שקוף.';
 
 const breadcrumbs = [
   { label: 'דף הבית', href: '/' },
   { label: 'אזורי שירות' },
 ];
-
-const areas = [
-  { name: 'חיפה', href: '/areas/haifa/' },
-  { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
-  { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
-  { name: 'קריית ים', href: '/areas/kiryat-yam/' },
-  { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
-  { name: 'נשר', href: '/areas/nesher/' },
-  { name: 'טבעון', href: '/areas/tivon/' },
-  { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
-];
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page Hero -->
   <PageHero
-    title="אזורי שירות"
-    subtitle="אנחנו מספקים שירות בכל אזור חיפה והקריות עם הגעה מהירה תוך שעתיים"
+    title="אזורי השירות שלנו"
+    subtitle="חיפה, הקריות, נשר, טבעון וזכרון יעקב - שירות מקומי ומקצועי"
     breadcrumbs={breadcrumbs}
   />
 
   <!-- Areas Grid -->
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        {areas.map((area) => (
-          <a
-            href={area.href}
-            class="group bg-surface p-6 text-center hover:bg-brand-50 border border-transparent hover:border-brand-200 transition-all shadow-sm hover:shadow-lg"
-          >
-            <div class="w-12 h-12 mx-auto bg-brand-600 flex items-center justify-center mb-3 group-hover:bg-accent-500 transition-colors">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </div>
-            <h2 class="font-heading font-bold text-dark group-hover:text-brand-600 transition-colors">
-              {area.name}
-            </h2>
-          </a>
-        ))}
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">כיסוי רחב</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">
+          איפה אנחנו עובדים?
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          אני נותן שירות בכל אזור חיפה והסביבה. מחיפה ועד זכרון יעקב, מהקריות ועד טבעון -
+          הגעה מהירה, בלי תוספת נסיעה, עם אותו מחיר שקוף בכל מקום.
+        </p>
       </div>
 
-      <div class="mt-12 text-center">
-        <p class="text-muted mb-4">לא מצאתם את האזור שלכם? התקשרו ונבדוק אם אנחנו מגיעים אליכם</p>
-        <a
-          href="tel:+972554329235"
-          class="inline-flex items-center gap-2 text-accent-500 font-bold hover:text-accent-600 transition-colors"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-          055-432-9235
-        </a>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {cities.map((city) => (
+          <a
+            href={`/areas/${city.slug}/`}
+            class="group bg-surface p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            <h3 class="text-xl font-heading font-bold text-dark mb-2 group-hover:text-accent-500 transition-colors">
+              {city.name}
+            </h3>
+            <p class="text-sm text-muted mb-4 line-clamp-2">
+              {city.intro.paragraphs[0].slice(0, 120)}...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-muted">
+                <span class="font-semibold">זמן הגעה:</span> {city.responseTime.regular}
+              </span>
+              <span class="inline-flex items-center gap-1 text-accent-500 font-semibold text-sm group-hover:gap-2 transition-all">
+                לפרטים
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <CTASection />
+  <!-- Coverage Map Section -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+        שירות מקומי - ללא תוספת נסיעה
+      </h2>
+      <p class="text-muted text-lg leading-relaxed mb-8">
+        בניגוד לחברות גדולות שגובות "תוספת פריפריה" או "תוספת נסיעה",
+        אני נותן אותו מחיר בכל האזורים. גר בחיפה, עובד בכל הסביבה -
+        זה חלק מהשירות, לא תוספת.
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 shadow-sm">
+          <p class="text-3xl font-bold text-accent-500 mb-1">8</p>
+          <p class="text-sm text-muted">ערים ויישובים</p>
+        </div>
+        <div class="bg-white p-4 shadow-sm">
+          <p class="text-3xl font-bold text-accent-500 mb-1">15+</p>
+          <p class="text-sm text-muted">שנות ניסיון</p>
+        </div>
+        <div class="bg-white p-4 shadow-sm">
+          <p class="text-3xl font-bold text-accent-500 mb-1">0₪</p>
+          <p class="text-sm text-muted">תוספת נסיעה</p>
+        </div>
+        <div class="bg-white p-4 shadow-sm">
+          <p class="text-3xl font-bold text-accent-500 mb-1">450₪</p>
+          <p class="text-sm text-muted">ניקוי מיני מרכזי</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Contact Form -->
-  <ContactForm variant="card" />
+  <!-- Service Hours -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">
+          שעות פעילות וזמינות
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-surface p-6 shadow-sm">
+          <h3 class="font-bold text-dark text-lg mb-4">שעות רגילות</h3>
+          <ul class="space-y-2 text-muted">
+            <li class="flex justify-between">
+              <span>ראשון - חמישי:</span>
+              <span class="font-medium text-dark">08:00 - 20:00</span>
+            </li>
+            <li class="flex justify-between">
+              <span>שישי:</span>
+              <span class="font-medium text-dark">08:00 - 13:00</span>
+            </li>
+            <li class="flex justify-between">
+              <span>שבת:</span>
+              <span class="font-medium text-dark">חירום בלבד</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-accent-500 text-white p-6 shadow-sm">
+          <h3 class="font-bold text-lg mb-4">קריאות חירום</h3>
+          <p class="mb-4 opacity-90">
+            זמין 24/7 לקריאות חירום:
+          </p>
+          <ul class="space-y-2 opacity-90">
+            <li>• נזילת מים פעילה</li>
+            <li>• סתימה חמורה</li>
+            <li>• מזגן לא עובד בגל חום</li>
+            <li>• תקלות חשמל דחופות</li>
+          </ul>
+          <a
+            href="tel:+972554329235"
+            class="mt-4 inline-flex items-center gap-2 bg-white text-accent-600 px-6 py-3 font-bold hover:bg-gray-100 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            055-432-9235
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="צריכים שירות באזור שלכם?"
+    subtitle="התקשרו עכשיו ונקבע מועד שמתאים לכם"
+  />
 </BaseLayout>

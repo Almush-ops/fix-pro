@@ -1,73 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import ServicesGrid from '../../components/ServicesGrid.astro';
 import CTASection from '../../components/CTASection.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import FAQ from '../../components/FAQ.astro';
+import { cities, type CityData } from '../../data/cities';
 
 export function getStaticPaths() {
-  const cities = [
-    {
-      slug: 'haifa',
-      name: 'חיפה',
-      description: 'העיר הגדולה בצפון, כולל שכונות: כרמל, הדר, נווה שאנן, קריית אליעזר, בת גלים, עין הים ועוד.',
-      neighborhoods: ['כרמל מערבי', 'כרמל מרכזי', 'הדר', 'נווה שאנן', 'קריית אליעזר', 'בת גלים', 'עין הים', 'רמות רמז', 'דניה'],
-    },
-    {
-      slug: 'kiryat-bialik',
-      name: 'קריית ביאליק',
-      description: 'עיר מגורים שקטה בלב הקריות, עם שכונות ותיקות וחדשות.',
-      neighborhoods: ['מרכז העיר', 'רמת אלון', 'שכונת הותיקים', 'גבעת ים'],
-    },
-    {
-      slug: 'kiryat-motzkin',
-      name: 'קריית מוצקין',
-      description: 'עיר מגורים פופולרית בקריות עם קרבה לחיפה ולחופי הים.',
-      neighborhoods: ['מרכז העיר', 'גבעת מוצקין', 'שכונת הותיקים'],
-    },
-    {
-      slug: 'kiryat-yam',
-      name: 'קריית ים',
-      description: 'עיר חוף ים מערבית בקריות עם קרבה לחופי הים התיכון.',
-      neighborhoods: ['מרכז העיר', 'שכונת הים', 'רמת יגאל'],
-    },
-    {
-      slug: 'kiryat-ata',
-      name: 'קריית אתא',
-      description: 'עיר תעשייה ומגורים גדולה בקריות עם אוכלוסייה מגוונת.',
-      neighborhoods: ['מרכז העיר', 'קריית אתא הירוקה', 'רמת שפרינצק', 'גבעת חיים'],
-    },
-    {
-      slug: 'nesher',
-      name: 'נשר',
-      description: 'עיר מגורים ירוקה בצמוד לחיפה, על מורדות הכרמל.',
-      neighborhoods: ['נשר עילית', 'נשר תחתית', 'רמת יצחק'],
-    },
-    {
-      slug: 'tivon',
-      name: 'טבעון',
-      description: 'יישוב ירוק ואיכותי על הכרמל, קרוב לחיפה.',
-      neighborhoods: ['קריית טבעון', 'אלוני אבא', 'רכסים'],
-    },
-    {
-      slug: 'zichron-yaakov',
-      name: 'זכרון יעקב',
-      description: 'מושבה היסטורית ויפהפייה עם אווירה ייחודית ונופים מרהיבים.',
-      neighborhoods: ['מרכז המושבה', 'רמת הנדיב', 'גבעת עדן'],
-    },
-  ];
-
   return cities.map((city) => ({
     params: { city: city.slug },
     props: { city },
   }));
 }
 
-const { city } = Astro.props;
+interface Props {
+  city: CityData;
+}
 
-const title = `טכנאי מזגנים, אינסטלטור והנדימן ב${city.name}`;
-const description = `פיקס פרו - שירות מיזוג אוויר, אינסטלציה והנדימן ב${city.name}. הגעה מהירה תוך שעתיים, מחיר שקוף, 15+ שנות ניסיון. ${city.description}`;
+const { city } = Astro.props;
 
 const breadcrumbs = [
   { label: 'דף הבית', href: '/' },
@@ -78,109 +28,187 @@ const breadcrumbs = [
 const services = [
   {
     title: 'מיזוג אוויר',
-    description: `ניקוי, תיקון והתקנת מזגנים ב${city.name}. ניקוי מיני מרכזי ב-450₪ בלבד.`,
+    description: city.services.airConditioning,
     image: '/images/services/air-conditioning.webp',
     href: '/services/air-conditioning/',
+    icon: '❄️',
   },
   {
     title: 'אינסטלציה',
-    description: `שירותי אינסטלציה מקצועיים ב${city.name}. תיקון נזילות, סתימות וכל בעיה.`,
+    description: city.services.plumbing,
     image: '/images/services/plumbing.webp',
     href: '/services/plumbing/',
+    icon: '🔧',
   },
   {
     title: 'הנדימן',
-    description: `עבודות תחזוקה ותיקונים לבית ב${city.name}. תליית טלוויזיה, הרכבת רהיטים ועוד.`,
+    description: city.services.handyman,
     image: '/images/services/handyman.webp',
     href: '/services/handyman/',
+    icon: '🛠️',
   },
 ];
 
-const faqs = [
-  {
-    question: `כמה זמן לוקח לכם להגיע ל${city.name}?`,
-    answer: `אנחנו מגיעים ל${city.name} תוך שעתיים מרגע הקריאה. לקריאות חירום (נזילות, סתימות) - אנחנו מתאמצים להגיע מהר יותר.`,
-  },
-  {
-    question: `באילו שכונות ב${city.name} אתם עובדים?`,
-    answer: `אנחנו מספקים שירות בכל השכונות ב${city.name}: ${city.neighborhoods.join(', ')}. אם השכונה שלכם לא ברשימה - התקשרו ונבדוק.`,
-  },
-  {
-    question: 'האם יש תוספת מחיר להגעה?',
-    answer: `לא! אין תוספת להגעה ל${city.name}. המחיר שאנחנו נותנים הוא המחיר הסופי - בלי הפתעות.`,
-  },
-  {
-    question: 'אתם עובדים גם בסופי שבוע?',
-    answer: 'אנחנו זמינים 24/7 לקריאות חירום, כולל שבתות וחגים. לעבודות רגילות - ימים א-ה, 08:00-20:00.',
-  },
-];
-
+// Schema markup
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `https://fix-pro.co.il/areas/${city.slug}/#localbusiness`,
   name: 'פיקס פרו',
+  alternateName: 'Fix Pro',
   description: `שירותי מיזוג אוויר, אינסטלציה והנדימן ב${city.name}`,
-  telephone: '+972-55-432-9235',
   url: `https://fix-pro.co.il/areas/${city.slug}/`,
+  telephone: '+972-55-432-9235',
+  priceRange: '₪₪',
   areaServed: {
     '@type': 'City',
     name: city.name,
+    ...(city.coordinates && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: city.coordinates.latitude,
+        longitude: city.coordinates.longitude,
+      },
+    }),
   },
   serviceType: ['מיזוג אוויר', 'אינסטלציה', 'הנדימן'],
-  priceRange: '₪₪',
   address: {
     '@type': 'PostalAddress',
     addressLocality: city.name,
     addressRegion: 'חיפה',
     addressCountry: 'IL',
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '08:00',
+      closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Friday'],
+      opens: '08:00',
+      closes: '13:00',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: city.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
 };
 ---
 
-<BaseLayout title={title} description={description}>
-  <!-- Page Hero -->
+<BaseLayout title={city.metaTitle} description={city.metaDescription}>
+  <!-- Hero -->
   <PageHero
-    title={`שירות ב${city.name}`}
-    subtitle={`מיזוג אוויר, אינסטלציה והנדימן - הגעה מהירה ומחיר שקוף`}
+    title={city.heroTitle}
+    subtitle={city.heroSubtitle}
     breadcrumbs={breadcrumbs}
+    showCTA={true}
+    ctaText="התקשרו עכשיו"
+    ctaHref="tel:+972554329235"
   />
 
-  <!-- Intro -->
+  <!-- Intro Section - Unique Content -->
   <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">שירות מקומי</p>
-      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
-        טכנאי מזגנים, אינסטלטור והנדימן ב{city.name}
-      </h2>
-      <p class="text-muted text-lg leading-relaxed mb-8">
-        {city.description} אנחנו מספקים שירות מקצועי ואמין לכל תושבי {city.name} והאזור.
-        הגעה מהירה תוך שעתיים, מחיר שקוף מראש, ואחריות מלאה על כל עבודה.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href="#contact"
-          class="inline-flex items-center gap-2 bg-accent-500 text-white px-8 py-4 font-bold text-lg hover:bg-accent-600 transition-colors"
-        >
-          קבלו הצעת מחיר
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </a>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">שירות מקומי</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark">
+          {city.intro.headline}
+        </h2>
+      </div>
+
+      <div class="prose prose-lg max-w-none text-muted leading-relaxed">
+        {city.intro.paragraphs.map((paragraph) => (
+          <p class="mb-6">{paragraph}</p>
+        ))}
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mt-10">
         <a
           href="tel:+972554329235"
-          class="inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 px-8 py-4 font-bold text-lg hover:bg-brand-600 hover:text-white transition-colors"
+          class="inline-flex items-center gap-2 bg-accent-500 text-white px-8 py-4 font-bold text-lg hover:bg-accent-600 transition-colors"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
           055-432-9235
         </a>
+        <a
+          href="https://wa.me/972554329235"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 font-bold text-lg hover:bg-green-600 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Services in City -->
+  <!-- Why We Serve This Area -->
   <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה אנחנו?</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+            {city.whyWeServe.title}
+          </h2>
+          <p class="text-muted leading-relaxed mb-8">
+            {city.whyWeServe.content}
+          </p>
+          <ul class="space-y-3">
+            {city.whyWeServe.highlights.map((highlight) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-dark font-medium">{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white p-8 shadow-lg">
+          <h3 class="text-xl font-heading font-bold text-dark mb-4 flex items-center gap-2">
+            <span class="text-2xl">⏱️</span>
+            זמני הגעה ל{city.name}
+          </h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+              <span class="text-muted">קריאה רגילה:</span>
+              <span class="font-bold text-dark">{city.responseTime.regular}</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+              <span class="text-muted">קריאת חירום:</span>
+              <span class="font-bold text-accent-500">{city.responseTime.emergency}</span>
+            </div>
+            {city.responseTime.note && (
+              <p class="text-sm text-muted italic">{city.responseTime.note}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services in City - Detailed -->
+  <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
@@ -189,28 +217,33 @@ const localBusinessSchema = {
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        {services.map((service) => (
-          <div class="group bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img
-                src={service.image}
-                alt={service.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                width="400"
-                height="300"
-                loading="lazy"
-              />
+      <div class="space-y-8">
+        {services.map((service, index) => (
+          <div class={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="md:w-1/3">
+              <div class="aspect-[4/3] overflow-hidden shadow-lg">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  class="w-full h-full object-cover"
+                  width="400"
+                  height="300"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-heading font-bold text-dark mb-3">{service.title}</h3>
-              <p class="text-muted leading-relaxed mb-5 text-sm">{service.description}</p>
+            <div class="md:w-2/3">
+              <h3 class="text-xl md:text-2xl font-heading font-bold text-dark mb-4 flex items-center gap-2">
+                <span class="text-2xl">{service.icon}</span>
+                {service.title} ב{city.name}
+              </h3>
+              <p class="text-muted leading-relaxed mb-4">{service.description}</p>
               <a
                 href={service.href}
-                class="inline-flex items-center gap-2 text-accent-500 font-bold text-sm hover:text-accent-600 transition-colors group"
+                class="inline-flex items-center gap-2 text-accent-500 font-bold hover:text-accent-600 transition-colors"
               >
-                למידע נוסף
-                <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                למידע נוסף על {service.title}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
               </a>
@@ -221,42 +254,89 @@ const localBusinessSchema = {
     </div>
   </section>
 
+  <!-- Local Context -->
+  <section class="py-16 md:py-20 bg-brand-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold mb-6">
+        {city.localContext.title}
+      </h2>
+      <p class="text-lg leading-relaxed opacity-90">
+        {city.localContext.content}
+      </p>
+    </div>
+  </section>
+
   <!-- Neighborhoods -->
   <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">כיסוי מלא</p>
-      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-8">
-        שכונות ב{city.name} שאנחנו משרתים
-      </h2>
-      <div class="flex flex-wrap justify-center gap-3">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">כיסוי מלא</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark">
+          שכונות ב{city.name} שאנחנו משרתים
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {city.neighborhoods.map((neighborhood) => (
-          <span class="px-4 py-2 bg-surface text-dark font-medium shadow-sm">
-            {neighborhood}
-          </span>
+          <div class="bg-surface p-4 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-dark mb-1">{neighborhood.name}</h3>
+            {neighborhood.description && (
+              <p class="text-sm text-muted">{neighborhood.description}</p>
+            )}
+          </div>
         ))}
       </div>
-      <p class="text-muted mt-6">
+
+      <p class="text-center text-muted mt-8">
         לא מצאתם את השכונה שלכם? התקשרו ונבדוק - יש סיכוי טוב שאנחנו מגיעים גם אליכם!
       </p>
+    </div>
+  </section>
+
+  <!-- Pricing Highlight -->
+  <section class="py-12 md:py-16 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white p-8 shadow-lg border-r-4 border-accent-500">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p class="text-accent-500 font-semibold text-sm mb-2">מבצע מיוחד</p>
+            <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-2">
+              ניקוי מזגן מיני מרכזי ב-450₪ בלבד
+            </h3>
+            <p class="text-muted">
+              במקום 600-700₪ בשוק | כולל פילטרים ובדיקת תקינות | אותו מחיר בכל {city.name}
+            </p>
+          </div>
+          <a
+            href="tel:+972554329235"
+            class="inline-flex items-center justify-center gap-2 bg-accent-500 text-white px-8 py-4 font-bold text-lg hover:bg-accent-600 transition-colors whitespace-nowrap"
+          >
+            הזמינו עכשיו
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
   <FAQ
     title={`שאלות נפוצות - שירות ב${city.name}`}
-    subtitle="תשובות לשאלות הנפוצות ביותר"
-    faqs={faqs}
+    subtitle="תשובות לשאלות שתושבי האזור שואלים"
+    faqs={city.faqs}
   />
 
   <!-- CTA -->
   <CTASection
     title={`צריכים שירות ב${city.name}?`}
-    subtitle="התקשרו עכשיו ונגיע תוך שעתיים"
+    subtitle="התקשרו עכשיו ונגיע במהירות"
   />
 
   <!-- Contact Form -->
-  <ContactForm variant="card" />
+  <section id="contact" class="scroll-mt-20">
+    <ContactForm variant="card" />
+  </section>
 
-  <!-- Local Business Schema -->
+  <!-- Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>
