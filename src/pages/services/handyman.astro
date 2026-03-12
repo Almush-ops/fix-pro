@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'הנדימן בחיפה והקריות';
+const description = 'שירותי הנדימן מקצועיים בחיפה והקריות. תליית טלוויזיה, הרכבת רהיטים, תיקון דלתות, התקנת מדפים, צביעה ועבודות תחזוקה. הגעה תוך שעתיים.';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'שירותים', href: '/services/' },
+  { label: 'הנדימן' },
+];
+
+const services = [
+  {
+    title: 'תליית טלוויזיה',
+    description: 'תליית מסכי טלוויזיה על הקיר בכל גודל. כולל הסתרת כבלים, בחירת גובה מיטבי והתקנה מאובטחת.',
+    price: 'החל מ-150₪',
+  },
+  {
+    title: 'הרכבת רהיטים',
+    description: 'הרכבת רהיטים מאיקאה ומחנויות אחרות - ארונות, מיטות, שולחנות, שידות ועוד. מהיר ומדויק.',
+    price: 'החל מ-100₪',
+  },
+  {
+    title: 'תיקון דלתות וחלונות',
+    description: 'תיקון דלתות שנתקעות, צירים שחורקים, ידיות שבורות, מנעולים תקולים וחלונות שלא נסגרים כראוי.',
+    price: 'החל מ-120₪',
+  },
+  {
+    title: 'התקנת מדפים',
+    description: 'התקנת מדפים צפים, מדפי ספרים, מתקנים לאחסון ומדפי מטבח. כולל עיגון מקצועי לכל סוג קיר.',
+    price: 'החל מ-80₪',
+  },
+  {
+    title: 'צביעה ושפכטל',
+    description: 'צביעת קירות וחדרים, תיקוני שפכטל, מילוי חורים וסדקים. עבודה נקייה עם חומרים איכותיים.',
+    price: 'החל מ-100₪ לשעה',
+  },
+  {
+    title: 'עבודות תחזוקה כלליות',
+    description: 'תיקונים קטנים, החלפת נורות בגובה, תיקון תריסים, החלפת אביזרים ושאר עבודות בית קטנות.',
+    price: 'החל מ-100₪',
+  },
+];
+
+const faqs = [
+  {
+    question: 'כמה עולה לתלות טלוויזיה?',
+    answer: 'תליית טלוויזיה מתחילה מ-150₪ לעבודה (לא כולל מתקן). המחיר תלוי בגודל המסך, סוג הקיר (גבס/בטון) והאם צריך להסתיר כבלים.',
+  },
+  {
+    question: 'אתם מרכיבים רהיטים מאיקאה?',
+    answer: 'כן! אנחנו מרכיבים רהיטים מאיקאה ומכל חנות אחרת. ארון בגדים פשוט לוקח כשעתיים, ארון PAX מורכב יכול לקחת 4-6 שעות.',
+  },
+  {
+    question: 'הדלת שלי נתקעת - מה הפתרון?',
+    answer: 'דלת שנתקעת זו בעיה נפוצה. בדרך כלל צריך להתאים את הצירים או לשייף מעט מהדלת. אנחנו מאבחנים את הבעיה ומתקנים במקום.',
+  },
+  {
+    question: 'כמה עולה לצבוע חדר?',
+    answer: 'צביעת חדר סטנדרטי (12-15 מ"ר) עולה בין 400-600₪ כולל חומרים. המחיר תלוי במצב הקירות והאם צריך שפכטל מקדים.',
+  },
+  {
+    question: 'מה זה "עבודות תחזוקה כלליות"?',
+    answer: 'כל העבודות הקטנות שצריך לעשות בבית: החלפת נורות בגובה, תיקון תריס, החלפת ידית דלת, התקנת וילונות, ועוד המון דברים קטנים שמצטברים.',
+  },
+];
+
+const handymanSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'שירותי הנדימן',
+  description: 'שירותי הנדימן ותחזוקה לבית בחיפה והקריות - תליית טלוויזיה, הרכבת רהיטים, תיקונים',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'פיקס פרו',
+    telephone: '+972-55-432-9235',
+    areaServed: 'חיפה והקריות',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'שירותי הנדימן',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.title,
+        description: s.description,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Hero -->
+  <PageHero
+    title="הנדימן"
+    subtitle="תליית טלוויזיה, הרכבת רהיטים, תיקונים - כל מה שצריך לבית"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/handyman.webp"
+  />
+
+  <!-- Services List -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark">שירותי הנדימן</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div class="bg-surface p-6 shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-heading font-bold text-dark mb-2">{service.title}</h3>
+            <p class="text-muted text-sm mb-4">{service.description}</p>
+            <div class="flex items-center justify-between pt-4 border-t border-border">
+              <span class="font-bold text-brand-600">{service.price}</span>
+              <a href="#contact" class="text-accent-500 font-semibold text-sm hover:text-accent-600 transition-colors">
+                הזמינו עכשיו ←
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה אנחנו</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+            בעל מקצוע רב-תחומי
+          </h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              כמה פעמים נמאס לכם לחפש בעל מקצוע לכל דבר קטן?
+              תליית תמונה - מישהו אחד. הרכבת ארון - מישהו אחר. תיקון דלת - שלישי.
+            </p>
+            <p>
+              אנחנו מציעים פתרון אחד לכל העבודות הקטנות בבית.
+              התקשרו, ספרו מה צריך, ונגיע לעשות את הכל - מהיר, מקצועי ובמחיר הוגן.
+            </p>
+          </div>
+          <ul class="mt-6 space-y-3">
+            {['פתרון אחד לכל הבית', 'מחיר שקוף מראש', 'עבודה נקייה ומסודרת', 'זמינות גבוהה'].map((item) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-dark">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="relative">
+          <img
+            src="/images/services/handyman.webp"
+            alt="הנדימן בעבודה"
+            class="shadow-xl w-full"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-4 -start-4 w-24 h-24 bg-accent-500 -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות על שירותי הנדימן"
+    subtitle="תשובות לשאלות הנפוצות ביותר"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="יש לכם משימה לבית?"
+    subtitle="התקשרו ונגיע לעשות את זה"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(handymanSchema)} />
+</BaseLayout>

@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'אינסטלטור בחיפה והקריות';
+const description = 'שירותי אינסטלציה מקצועיים בחיפה והקריות. תיקון נזילות, פתיחת סתימות, החלפת ברזים, התקנת אסלות ותיקון דודי שמש. הגעה תוך שעתיים.';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'שירותים', href: '/services/' },
+  { label: 'אינסטלציה' },
+];
+
+const services = [
+  {
+    title: 'תיקון נזילות',
+    description: 'איתור ותיקון נזילות בצנרת, ברזים, אסלות וכיורים. שימוש בציוד מקצועי לאיתור נזילות סמויות.',
+    price: 'החל מ-150₪',
+  },
+  {
+    title: 'פתיחת סתימות',
+    description: 'פתיחת סתימות בכיורים, אסלות, מקלחות וצנרת ביוב. שימוש בספירלה חשמלית ובמקרים מורכבים - מצלמת ביוב.',
+    price: 'החל מ-200₪',
+  },
+  {
+    title: 'החלפת ברזים',
+    description: 'התקנה והחלפה של ברזים במטבח, בחדר האמבטיה ובמרפסת. עבודה נקייה ומקצועית.',
+    price: 'החל מ-180₪',
+  },
+  {
+    title: 'התקנת אסלות וכיורים',
+    description: 'התקנת אסלות סמויות ורגילות, כיורים, ארונות אמבטיה וברזים. כולל חיבור לצנרת וביוב.',
+    price: 'החל מ-350₪',
+  },
+  {
+    title: 'תיקון דודי שמש',
+    description: 'תיקון ותחזוקת דודי שמש - החלפת אלמנט, תרמוסטט, מצופים ואביזרים. בדיקת תקינות המערכת.',
+    price: 'החל מ-250₪',
+  },
+  {
+    title: 'התקנת מכונות כביסה',
+    description: 'חיבור מכונות כביסה ומדיחי כלים לצנרת המים והביוב. הכנת תשתית לפי הצורך.',
+    price: 'החל מ-150₪',
+  },
+];
+
+const faqs = [
+  {
+    question: 'יש לי נזילה בקיר - מה עושים?',
+    answer: 'נזילה בקיר דורשת טיפול מיידי כדי למנוע נזקים. אנחנו מגיעים עם ציוד לאיתור נזילות סמויות, מאתרים את מקור הבעיה ומתקנים עם מינימום נזק לקיר.',
+  },
+  {
+    question: 'האסלה שלי סתומה - אפשר לפתור את זה?',
+    answer: 'בהחלט! רוב הסתימות באסלות נפתרות במקום. אנחנו משתמשים בספירלה חשמלית שפותחת סתימות עמוקות. במקרים קשים יש לנו גם מצלמת ביוב לאבחון מדויק.',
+  },
+  {
+    question: 'כמה עולה להחליף ברז במטבח?',
+    answer: 'החלפת ברז במטבח מתחילה מ-180₪ לעבודה (לא כולל הברז עצמו). אם יש צורך בהתאמות נוספות, נציע מחיר מראש.',
+  },
+  {
+    question: 'הדוד שמש לא מחמם - מה הבעיה?',
+    answer: 'כמה סיבות אפשריות: אלמנט שרוף, תרמוסטט תקול, בעיה במצוף או אבנית בדוד. אנחנו מבצעים בדיקה במקום ונותנים אבחנה ומחיר לפני התיקון.',
+  },
+  {
+    question: 'אתם עובדים בשעות חירום?',
+    answer: 'כן! אנחנו זמינים 24/7 לקריאות חירום - נזילות, סתימות, פיצוצי צנרת. בשעות לא שגרתיות יש תוספת למחיר.',
+  },
+];
+
+const plumbingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'שירותי אינסטלציה',
+  description: 'שירותי אינסטלציה מקצועיים בחיפה והקריות - תיקון נזילות, פתיחת סתימות, התקנות',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'פיקס פרו',
+    telephone: '+972-55-432-9235',
+    areaServed: 'חיפה והקריות',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'שירותי אינסטלציה',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.title,
+        description: s.description,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Hero -->
+  <PageHero
+    title="אינסטלציה"
+    subtitle="תיקון נזילות, פתיחת סתימות, החלפת ברזים - שירות מהיר ומקצועי"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/plumbing.webp"
+  />
+
+  <!-- Services List -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark">שירותי אינסטלציה</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div class="bg-surface p-6 shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-heading font-bold text-dark mb-2">{service.title}</h3>
+            <p class="text-muted text-sm mb-4">{service.description}</p>
+            <div class="flex items-center justify-between pt-4 border-t border-border">
+              <span class="font-bold text-brand-600">{service.price}</span>
+              <a href="#contact" class="text-accent-500 font-semibold text-sm hover:text-accent-600 transition-colors">
+                הזמינו עכשיו ←
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה אנחנו</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+            אינסטלטור מקצועי ואמין
+          </h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              בעיות אינסטלציה יכולות להפוך למטרד רציני אם לא מטפלים בהן בזמן.
+              אנחנו מגיעים מהר, מאתרים את הבעיה ומתקנים אותה במקצועיות.
+            </p>
+            <p>
+              אנחנו מאמינים בעבודה נקייה - לא משאירים בלגן אחרינו.
+              כל עבודה מתבצעת עם אחריות מלאה ובמחיר שקוף שנקבע מראש.
+            </p>
+          </div>
+          <ul class="mt-6 space-y-3">
+            {['הגעה מהירה לקריאות חירום', 'מחיר שקוף לפני תחילת העבודה', 'עבודה נקייה ומסודרת', 'אחריות על כל תיקון'].map((item) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-dark">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="relative order-1 lg:order-2">
+          <img
+            src="/images/services/plumbing.webp"
+            alt="אינסטלטור בעבודה"
+            class="shadow-xl w-full"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-4 -end-4 w-24 h-24 bg-accent-500 -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות על אינסטלציה"
+    subtitle="תשובות לשאלות הנפוצות ביותר"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="יש לכם בעיית אינסטלציה?"
+    subtitle="התקשרו עכשיו ונגיע לטפל"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(plumbingSchema)} />
+</BaseLayout>

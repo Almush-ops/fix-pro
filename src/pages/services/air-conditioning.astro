@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'טכנאי מזגנים בחיפה והקריות';
+const description = 'שירות מיזוג אוויר מקצועי בחיפה והקריות. ניקוי מזגנים, תיקון, התקנה ומילוי גז. ניקוי מיני מרכזי ב-450₪ בלבד. הגעה תוך שעתיים.';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'שירותים', href: '/services/' },
+  { label: 'מיזוג אוויר' },
+];
+
+const services = [
+  {
+    title: 'ניקוי מזגן עילי',
+    description: 'ניקוי יסודי של המזגן כולל פילטרים, גוף המזגן והיחידה החיצונית. מונע ריחות רעים ומשפר את יעילות הקירור.',
+    price: 'החל מ-150₪',
+  },
+  {
+    title: 'ניקוי מיני מרכזי',
+    description: 'ניקוי מקצועי הכולל פירוק מלא של היחידה, ניקוי המאייד, הפילטרים וכל החלקים. מחזיר את המזגן לפעולה מיטבית.',
+    price: '450₪',
+    highlight: true,
+  },
+  {
+    title: 'תיקון מזגנים',
+    description: 'אבחון ותיקון תקלות בכל סוגי המזגנים - עיליים, מיני מרכזיים ומרכזיים. החלפת חלקים, תיקון נזילות ובעיות קירור.',
+    price: 'החל מ-200₪',
+  },
+  {
+    title: 'מילוי גז',
+    description: 'בדיקת רמת הגז במזגן ומילוי בגז R410A או R32 לפי הצורך. כולל בדיקת נזילות במערכת.',
+    price: 'החל מ-300₪',
+  },
+  {
+    title: 'התקנת מזגן',
+    description: 'התקנה מקצועית של מזגנים חדשים. כולל ניקוב, העברת צנרת, התקנת יחידה פנימית וחיצונית וחיבור לחשמל.',
+    price: 'החל מ-500₪',
+  },
+  {
+    title: 'פירוק והעברת מזגן',
+    description: 'פירוק מזגן ממקום קיים והתקנתו מחדש במיקום אחר. מתאים למעבר דירה או שיפוץ.',
+    price: 'החל מ-400₪',
+  },
+];
+
+const faqs = [
+  {
+    question: 'כמה פעמים בשנה צריך לנקות מזגן?',
+    answer: 'מומלץ לנקות את המזגן פעמיים בשנה - לפני תחילת עונת הקיץ ולפני עונת החורף. אם המזגן נמצא בשימוש יומיומי או באזור מאובק, כדאי לנקות בתדירות גבוהה יותר.',
+  },
+  {
+    question: 'איך אני יודע שהמזגן צריך מילוי גז?',
+    answer: 'סימנים שהמזגן צריך גז: קירור/חימום חלש, יצירת קרח על הצנרת או היחידה הפנימית, רעשים חריגים, או עלייה בחשבון החשמל. אנחנו מבצעים בדיקה ואבחון במקום.',
+  },
+  {
+    question: 'מה ההבדל בין מזגן עילי למיני מרכזי?',
+    answer: 'מזגן עילי הוא יחידה בודדת שמותקנת על הקיר ומקררת חדר אחד. מיני מרכזי הוא מערכת עם יחידה מרכזית שמחוברת לכמה יציאות בתקרה ומקררת מספר חדרים.',
+  },
+  {
+    question: 'כמה זמן לוקח לנקות מזגן מיני מרכזי?',
+    answer: 'ניקוי מיני מרכזי מקצועי לוקח בין שעה לשעתיים, תלוי במצב המזגן ובמספר היציאות. הניקוי כולל פירוק, ניקוי כל החלקים והרכבה מחדש.',
+  },
+  {
+    question: 'האם אתם מתקינים מזגנים של כל המותגים?',
+    answer: 'כן, אנחנו מתקינים ומתקנים מזגנים של כל המותגים המובילים: אלקטרה, תדיראן, גריי, מיצובישי, דייקין, LG, סמסונג ועוד.',
+  },
+];
+
+const acSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'שירות מיזוג אוויר',
+  description: 'שירות מיזוג אוויר מקצועי בחיפה והקריות - ניקוי, תיקון, התקנה ומילוי גז',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'פיקס פרו',
+    telephone: '+972-55-432-9235',
+    areaServed: 'חיפה והקריות',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'שירותי מיזוג אוויר',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.title,
+        description: s.description,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Hero -->
+  <PageHero
+    title="מיזוג אוויר"
+    subtitle="ניקוי, תיקון, התקנה ומילוי גז - שירות מקצועי בחיפה והקריות"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/air-conditioning.webp"
+  />
+
+  <!-- Services List -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark">שירותי מיזוג אוויר</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div class={`bg-surface p-6 shadow-sm hover:shadow-lg transition-shadow ${service.highlight ? 'ring-2 ring-accent-500' : ''}`}>
+            {service.highlight && (
+              <span class="inline-block bg-accent-500 text-white text-xs font-bold px-3 py-1 mb-4">
+                המומלץ שלנו
+              </span>
+            )}
+            <h3 class="text-lg font-heading font-bold text-dark mb-2">{service.title}</h3>
+            <p class="text-muted text-sm mb-4">{service.description}</p>
+            <div class="flex items-center justify-between pt-4 border-t border-border">
+              <span class={`font-bold ${service.highlight ? 'text-accent-500 text-lg' : 'text-brand-600'}`}>
+                {service.price}
+              </span>
+              <a href="#contact" class="text-accent-500 font-semibold text-sm hover:text-accent-600 transition-colors">
+                הזמינו עכשיו ←
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה אנחנו</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-6">
+            טכנאי מזגנים מנוסה באזור שלכם
+          </h2>
+          <div class="space-y-4 text-muted">
+            <p>
+              עם למעלה מ-15 שנות ניסיון בתחום המיזוג, אנחנו מכירים כל סוג של מזגן ויודעים לטפל בכל בעיה.
+              מעילי קטן ועד מיני מרכזי מורכב - אנחנו מספקים שירות מקצועי ואמין.
+            </p>
+            <p>
+              אנחנו עובדים עם כל המותגים המובילים בשוק ומשתמשים בחלפים מקוריים.
+              כל עבודה מגיעה עם אחריות מלאה, כי חשוב לנו שתהיו מרוצים.
+            </p>
+          </div>
+          <ul class="mt-6 space-y-3">
+            {['מחיר שקוף מראש - בלי הפתעות', 'הגעה תוך שעתיים', 'אחריות על כל עבודה', 'טכנאי מנוסה ומקצועי'].map((item) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-accent-500 flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-dark">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="relative">
+          <img
+            src="/images/gallery/gal-hvac-work-2.webp"
+            alt="טכנאי מזגנים בעבודה"
+            class="shadow-xl w-full"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-4 -start-4 w-24 h-24 bg-accent-500 -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות על מיזוג אוויר"
+    subtitle="תשובות לשאלות הנפוצות ביותר"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="צריכים שירות מיזוג אוויר?"
+    subtitle="התקשרו עכשיו ונגיע תוך שעתיים"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(acSchema)} />
+</BaseLayout>
