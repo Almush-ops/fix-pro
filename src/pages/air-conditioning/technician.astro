@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'טכנאי מזגנים בחיפה | הגעה תוך שעה | 055-432-9235';
+const description = 'טכנאי מזגנים מוסמך בחיפה והקריות. תיקון, התקנה, ניקוי ותחזוקה. הגעה מהירה תוך שעה, מחירים הוגנים, אחריות על העבודה. 24/7!';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'מיזוג אוויר', href: '/services/air-conditioning/' },
+  { label: 'טכנאי מזגנים' },
+];
+
+const expertise = [
+  {
+    title: 'ניסיון רב שנים',
+    description: 'מעל 10 שנות ניסיון בתחום המיזוג. ראינו כל סוג של תקלה, התמודדנו עם כל אתגר התקנה, ולמדנו מה עובד ומה לא.',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>`,
+  },
+  {
+    title: 'הכשרה מקצועית',
+    description: 'טכנאי מורשה עם הסמכות מקצועיות לעבודה עם כל סוגי המזגנים והגזים. עדכון מתמיד בטכנולוגיות חדשות ודגמים חדשים.',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>`,
+  },
+  {
+    title: 'ציוד מתקדם',
+    description: 'עובדים עם ציוד מקצועי ומתקדם - מכשירי אבחון דיגיטליים, ציוד מילוי גז מדויק, וכלים לכל סוגי העבודות.',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  },
+  {
+    title: 'כל המותגים',
+    description: 'מומחים בכל מותגי המזגנים - ישראליים ובינלאומיים. אלקטרה, תדיראן, מיצובישי, דייקין, גרי, LG, סמסונג ועוד.',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>`,
+  },
+];
+
+const services = [
+  {
+    title: 'תיקון מזגנים',
+    description: 'אבחון ותיקון כל סוגי התקלות - מזגן לא מקרר, נזילות, רעשים, בעיות חשמל, מילוי גז ועוד.',
+    price: 'מ-100₪',
+    href: '/air-conditioning/repair/',
+  },
+  {
+    title: 'התקנת מזגנים',
+    description: 'התקנה מקצועית של מזגנים עיליים, מיני מרכזי ומרכזי. כולל צנרת, חיבור חשמלי ובדיקה.',
+    price: 'מ-400₪',
+    href: '/air-conditioning/installation/',
+  },
+  {
+    title: 'ניקוי מזגנים',
+    description: 'ניקוי מקצועי ויסודי של כל סוגי המזגנים. כולל חיטוי נגד חיידקים ועובש.',
+    price: 'מ-150₪',
+    href: '/air-conditioning/cleaning/',
+  },
+  {
+    title: 'תחזוקת מזגנים',
+    description: 'בדיקה תקופתית, ניקוי פילטרים, בדיקת גז ומניעת תקלות. הדרך הטובה ביותר לשמור על המזגן.',
+    price: 'מ-120₪',
+    href: '/services/air-conditioning/',
+  },
+];
+
+const pricingTable = [
+  { service: 'ביקור אבחון', price: '100₪', note: 'מקוזז מעלות התיקון' },
+  { service: 'ניקוי מזגן עילי', price: '150₪', note: 'כולל חיטוי' },
+  { service: 'ניקוי מיני מרכזי', price: '450₪', note: 'פירוק מלא' },
+  { service: 'מילוי גז', price: '250-500₪', note: 'תלוי בסוג' },
+  { service: 'התקנה רגילה', price: '400-550₪', note: 'עבודה בלבד' },
+  { service: 'קריאת חירום', price: '+100₪', note: 'לילה/שבת' },
+];
+
+const faqs = [
+  {
+    question: 'איך מוצאים טכנאי מזגנים אמין?',
+    answer: 'כמה דברים שכדאי לבדוק: האם הטכנאי נותן הצעת מחיר לפני העבודה? האם יש לו אחריות על העבודה? האם הוא מגיע מצויד עם ציוד מקצועי? האם יש לו ביקורות חיוביות? ואם הטכנאי לא מוכן לענות על שאלות או לתת הצעת מחיר - עדיף לחפש מישהו אחר.',
+  },
+  {
+    question: 'כמה עולה קריאת טכנאי מזגנים?',
+    answer: 'ביקור אבחון עולה 100₪. אם אתם ממשיכים לתיקון - ה-100₪ מקוזזים מעלות התיקון. כלומר, אם התיקון עולה 300₪ - תשלמו רק 300₪ ולא 400₪. אם לא מתקנים - משלמים רק את דמי הביקור. כך או כך, תקבלו הצעת מחיר מדויקת לפני כל החלטה.',
+  },
+  {
+    question: 'האם אתם עובדים בשבת?',
+    answer: 'כן, אנחנו מספקים שירות 24/7 כולל שבתות וחגים. בשעות רגילות (08:00-20:00) אין תוספת. בלילות, שבתות וחגים - תוספת של 100₪ לעלות השירות.',
+  },
+  {
+    question: 'כמה זמן לוקח לתקן מזגן?',
+    answer: 'תלוי בסוג התקלה. תקלות פשוטות כמו ניקוז או פילטרים - 30-60 דקות. מילוי גז - כשעה. החלפת חלק - 1-2 שעות. תיקונים מורכבים יותר יכולים לקחת יותר זמן, ולפעמים נצטרך להזמין חלק ולחזור ביום אחר.',
+  },
+  {
+    question: 'יש אחריות על התיקון?',
+    answer: 'בהחלט! על עבודה - אחריות של 3 חודשים. על חלקי חילוף - אחריות יצרן (בדרך כלל שנה). אם התקלה חוזרת באותו רכיב בתוך תקופת האחריות - נתקן חינם.',
+  },
+  {
+    question: 'איך מתאמים ביקור?',
+    answer: 'הכי פשוט - להתקשר אלינו ל-055-432-9235. אנחנו זמינים מ-08:00 עד 20:00, וגם מחוץ לשעות אלה לקריאות חירום. אפשר גם להשאיר פרטים בטופס ואנחנו נחזור אליכם תוך זמן קצר.',
+  },
+];
+
+const technicianSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'פיקס פרו - טכנאי מזגנים בחיפה',
+  description: 'טכנאי מזגנים מוסמך בחיפה והקריות - תיקון, התקנה, ניקוי ותחזוקה',
+  telephone: '+972-55-432-9235',
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  serviceArea: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 32.794,
+      longitude: 34.989,
+    },
+    geoRadius: '30000',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+      description: 'שירות חירום 24/7',
+    },
+  ],
+  priceRange: '₪₪',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'שירותי מזגנים',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'תיקון מזגנים' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'התקנת מזגנים' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'ניקוי מזגנים' } },
+    ],
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <PageHero
+    title="טכנאי מזגנים בחיפה והקריות"
+    subtitle="טכנאי מוסמך עם ניסיון של שנים. תיקון, התקנה, ניקוי ותחזוקה - הכל במקום אחד!"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/air-conditioning.webp"
+  />
+
+  <!-- Quick Contact Banner -->
+  <section class="bg-brand-600 py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-white text-center md:text-start">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 bg-white/20 flex items-center justify-center">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-bold text-lg">הגעה תוך שעה</p>
+            <p class="text-white/80 text-sm">שירות מהיר לכל אזור חיפה והקריות</p>
+          </div>
+        </div>
+        <div class="hidden md:block w-px h-12 bg-white/30"></div>
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 bg-white/20 flex items-center justify-center">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-bold text-lg">מחיר שקוף מראש</p>
+            <p class="text-white/80 text-sm">ללא הפתעות, ללא עלויות נסתרות</p>
+          </div>
+        </div>
+        <a href="tel:0554329235" class="bg-accent-500 text-white px-8 py-3 font-bold hover:bg-accent-600 transition-colors">
+          055-432-9235
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-muted">
+        <p class="text-lg leading-relaxed">
+          מחפשים טכנאי מזגנים אמין בחיפה? הגעתם למקום הנכון. אנחנו מספקים שירותי מיזוג אוויר מקצועיים
+          בכל אזור חיפה והקריות - תיקון, התקנה, ניקוי ותחזוקה של כל סוגי המזגנים.
+        </p>
+        <p>
+          מה שמבדיל אותנו מטכנאים אחרים? קודם כל - מקצועיות. יש לנו את הידע, הניסיון והציוד לטפל בכל תקלה.
+          שנית - שירות. אנחנו מגיעים בזמן, נותנים הצעת מחיר לפני העבודה, ולא עוזבים עד שהכל עובד.
+          ושלישית - יושרה. אם התיקון לא משתלם - נגיד לכם. לא "נמכור" לכם שירותים מיותרים.
+        </p>
+        <p>
+          אנחנו עובדים עם כל מותגי המזגנים - ישראליים ובינלאומיים - ומכירים את כל הדגמים החדשים והישנים.
+          בין אם יש לכם מזגן עילי קטן בחדר שינה או מערכת מיזוג מרכזית בבניין משרדים - אנחנו יודעים לטפל בזה.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה דווקא אנחנו?</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">המומחיות שלנו</h2>
+        <p class="text-muted max-w-2xl mx-auto">טכנאים מוסמכים עם ניסיון, ידע וציוד מקצועי</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {expertise.map((item) => (
+          <div class="bg-white p-6 shadow-sm text-center hover:shadow-lg transition-shadow group">
+            <div class="w-16 h-16 bg-brand-100 group-hover:bg-brand-600 mx-auto flex items-center justify-center mb-4 transition-colors">
+              <div class="text-brand-600 group-hover:text-white transition-colors" set:html={item.icon} />
+            </div>
+            <h3 class="font-heading font-bold text-dark mb-2">{item.title}</h3>
+            <p class="text-muted text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">מה אנחנו עושים?</h2>
+        <p class="text-muted max-w-2xl mx-auto">כל שירותי המיזוג במקום אחד</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <a href={service.href} class="group bg-surface p-6 hover:bg-brand-50 transition-colors flex gap-4">
+            <div class="w-12 h-12 bg-brand-600 group-hover:bg-accent-500 flex items-center justify-center shrink-0 transition-colors">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-baseline justify-between mb-2">
+                <h3 class="font-heading font-bold text-dark group-hover:text-brand-600 transition-colors">{service.title}</h3>
+                <span class="text-accent-500 font-bold">{service.price}</span>
+              </div>
+              <p class="text-muted text-sm">{service.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Pricing -->
+  <section class="py-16 md:py-20 bg-brand-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-400 font-semibold text-sm uppercase tracking-wide mb-2">מחירון</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">מחירים שקופים</h2>
+        <p class="text-white/70">ללא הפתעות, ללא עלויות נסתרות</p>
+      </div>
+
+      <div class="bg-white/10 overflow-hidden">
+        <table class="w-full">
+          <tbody class="divide-y divide-white/20">
+            {pricingTable.map((row) => (
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="py-4 px-6 text-white">{row.service}</td>
+                <td class="py-4 px-4 text-accent-400 font-bold whitespace-nowrap">{row.price}</td>
+                <td class="py-4 px-6 text-white/60 text-sm hidden sm:table-cell">{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="#contact" class="inline-block bg-accent-500 text-white px-8 py-3 font-bold hover:bg-accent-600 transition-colors">
+          קבלו הצעת מחיר מדויקת
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas We Cover -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">טכנאי מזגנים בכל הצפון</h2>
+        <p class="text-muted">מגיעים תוך שעה לכל אזור חיפה והקריות</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { name: 'חיפה', href: '/areas/haifa/' },
+          { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+          { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+          { name: 'קריית ים', href: '/areas/kiryat-yam/' },
+          { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
+          { name: 'נשר', href: '/areas/nesher/' },
+          { name: 'טבעון', href: '/areas/tivon/' },
+          { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
+        ].map((area) => (
+          <a
+            href={area.href}
+            class="group bg-white hover:bg-brand-600 p-4 shadow-sm text-center transition-all duration-300"
+          >
+            <div class="flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-brand-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-semibold text-dark group-hover:text-white transition-colors">{area.name}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">למה לבחור בנו?</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">ההתחייבות שלנו אליכם</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-100 mx-auto flex items-center justify-center mb-4">
+            <svg class="w-10 h-10 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-bold text-dark text-xl mb-2">הגעה מהירה</h3>
+          <p class="text-muted">מגיעים תוך שעה לכל אזור חיפה והקריות. שירות חירום 24/7 כולל שבתות וחגים.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-100 mx-auto flex items-center justify-center mb-4">
+            <svg class="w-10 h-10 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-bold text-dark text-xl mb-2">אחריות מלאה</h3>
+          <p class="text-muted">אחריות על עבודה ועל חלקי חילוף. אם משהו לא בסדר - נתקן על חשבוננו.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-100 mx-auto flex items-center justify-center mb-4">
+            <svg class="w-10 h-10 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-bold text-dark text-xl mb-2">מחיר הוגן</h3>
+          <p class="text-muted">הצעת מחיר מראש, ללא הפתעות. אנחנו לא מנצלים מצבי חירום כדי לגבות יותר.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות"
+    subtitle="תשובות לשאלות הנפוצות ביותר על שירותי טכנאי מזגנים"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="צריכים טכנאי מזגנים?"
+    subtitle="התקשרו עכשיו - הגעה תוך שעה!"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(technicianSchema)} />
+</BaseLayout>

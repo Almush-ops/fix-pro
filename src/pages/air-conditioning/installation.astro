@@ -1,0 +1,433 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const title = 'התקנת מזגן בחיפה | מחירון 2026 | כל סוגי ההתקנות';
+const description = 'התקנת מזגנים מקצועית בחיפה והקריות. התקנה רגילה מ-400₪, התקנה מורכבת לפי הצעה. כל המותגים, אחריות מלאה, הגעה מהירה!';
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'מיזוג אוויר', href: '/services/air-conditioning/' },
+  { label: 'התקנת מזגנים' },
+];
+
+const installationTypes = [
+  {
+    title: 'התקנה רגילה',
+    description: 'התקנת מזגן עילי בתנאים רגילים - קיר בנוי סטנדרטי, גובה עד 3 מטר, צנרת עד 5 מטר. כולל התקנת יחידה פנימית, יחידה חיצונית, וחיבור צנרת נחושת.',
+    price: 'מ-400₪',
+    includes: ['התקנת יחידה פנימית', 'התקנת יחידה חיצונית', 'צנרת עד 5 מטר', 'בדיקת ואקום', 'הפעלה ובדיקה'],
+    note: 'המחיר לא כולל חומרים (צנרת, כבלים, קונסולה)',
+  },
+  {
+    title: 'התקנה עם עבודות בניה',
+    description: 'התקנה הכוללת ניקוב קירות בטון, עבודה בגובה רב, או התקנה בתנאים מאתגרים. מתומחרת לפי הביקור והערכת העבודה.',
+    price: 'לפי הצעה',
+    includes: ['ניקוב קירות בטון', 'עבודה בגובה', 'מסלול צנרת מורכב', 'התקנה מלאה', 'בדיקה ואחריות'],
+    note: 'נדרש ביקור להערכה לפני הצעת מחיר',
+  },
+  {
+    title: 'התקנת מיני מרכזי',
+    description: 'התקנת מערכת מיני מרכזי - יחידה חיצונית אחת המחוברת ליחידות פנימיות מוסתרות בתקרה. עבודה מורכבת הדורשת תכנון מראש.',
+    price: 'לפי הצעה',
+    includes: ['תכנון מערכת', 'התקנת יחידה מרכזית', 'חיבור דיפוזרים', 'תיעול', 'בדיקה ואיזון'],
+    note: 'מומלץ לשלב עם שיפוץ או בנייה',
+  },
+];
+
+const pricingByHP = [
+  { hp: '1.0-1.5', btu: '12,000-18,000', rooms: 'חדר עד 20 מ"ר', installation: '400-500₪', note: 'התקנה רגילה' },
+  { hp: '2.0-2.5', btu: '24,000-30,000', rooms: 'סלון עד 35 מ"ר', installation: '450-550₪', note: 'התקנה רגילה' },
+  { hp: '3.0+', btu: '36,000+', rooms: 'שטח גדול/מסחרי', installation: '550₪+', note: 'לפי הערכה' },
+];
+
+const extrasPricing = [
+  { item: 'צנרת נחושת (מעבר ל-5 מטר)', price: '50₪/מטר', note: 'כולל חומר ועבודה' },
+  { item: 'ניקוב קיר בטון', price: '150₪', note: 'לניקוב' },
+  { item: 'קונסולה ליחידה חיצונית', price: '200-400₪', note: 'תלוי בגודל' },
+  { item: 'כיסוי צנרת (גלילה)', price: '80₪/מטר', note: 'מראה אסתטי' },
+  { item: 'הזזת יחידה קיימת', price: 'מ-300₪', note: 'תלוי במרחק' },
+  { item: 'פירוק מזגן ישן', price: '150₪', note: 'ללא פינוי' },
+  { item: 'פינוי מזגן ישן', price: '100₪', note: 'אם נדרש' },
+  { item: 'תוספת שלט מרחוק', price: '80-150₪', note: 'מקורי או אוניברסלי' },
+];
+
+const process = [
+  {
+    step: 1,
+    title: 'תיאום וביקור',
+    description: 'מתאמים ביקור להערכת העבודה, מודדים את המיקום, בודקים את מסלול הצנרת ונותנים הצעת מחיר מדויקת.',
+  },
+  {
+    step: 2,
+    title: 'הכנת ציוד',
+    description: 'מגיעים ביום ההתקנה עם כל הציוד והחומרים הנדרשים - מזגן, צנרת, קונסולה וכלי עבודה.',
+  },
+  {
+    step: 3,
+    title: 'התקנה מקצועית',
+    description: 'מתקינים את היחידה הפנימית והחיצונית, מחברים צנרת וחשמל, מבצעים ואקום ומילוי גז.',
+  },
+  {
+    step: 4,
+    title: 'בדיקה והפעלה',
+    description: 'בודקים את כל הפונקציות, וודאים קירור וחימום תקין, מסבירים לכם כיצד להפעיל ומוסרים אחריות.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'כמה עולה התקנת מזגן?',
+    answer: 'התקנה רגילה של מזגן עילי עולה בין 400-550₪, תלוי בגודל המזגן ותנאי ההתקנה. המחיר לא כולל חומרים כמו צנרת וקונסולה (בדרך כלל עוד 300-500₪). אם יש עבודות בניה כמו ניקוב בטון או עבודה בגובה - המחיר גבוה יותר ונקבע לפי ביקור. תמיד נותנים הצעת מחיר מלאה לפני העבודה.',
+  },
+  {
+    question: 'כמה זמן לוקחת התקנת מזגן?',
+    answer: 'התקנה רגילה לוקחת 2-3 שעות. התקנה מורכבת עם עבודות בניה יכולה לקחת יום עבודה מלא. התקנת מיני מרכזי עם תיעול לוקחת 1-3 ימים תלוי בגודל המערכת.',
+  },
+  {
+    question: 'האם צריך חשמלאי להתקנת מזגן?',
+    answer: 'אם יש כבר נקודת חשמל ייעודית למזגן - אנחנו מחברים אליה. אם צריך להעביר קו חדש מהלוח או להוסיף מפסק - צריך חשמלאי מוסמך. אנחנו יכולים לתאם את זה בשבילכם או לעבוד מול חשמלאי שתביאו.',
+  },
+  {
+    question: 'איפה הכי טוב להתקין את המזגן?',
+    answer: 'היחידה הפנימית צריכה להיות במקום מרכזי בחדר, לא ישירות מעל המיטה או הספה, בגובה של 2-2.5 מטר. היחידה החיצונית צריכה להיות במקום מאוורר, לא בשמש ישירה, ובמרחק סביר מחלונות השכנים. ניעץ לכם במיקום האופטימלי בזמן הביקור.',
+  },
+  {
+    question: 'האם יש אחריות על התקנה?',
+    answer: 'כן! על עבודת ההתקנה - אחריות של שנה. זה כולל נזילות, בעיות צנרת, וכל תקלה שנובעת מההתקנה. האחריות על המזגן עצמו היא של היצרן (בדרך כלל 3-5 שנים) ונותנים לכם את כל המסמכים הנדרשים.',
+  },
+  {
+    question: 'האם אתם מוכרים גם מזגנים?',
+    answer: 'אנחנו מתמקדים בהתקנה ותיקון, לא במכירת מזגנים. אבל אנחנו יכולים לייעץ לכם איזה מזגן מתאים לחדר שלכם, ואם תרצו - לרכוש ולהביא אותו בשבילכם מחנויות בהן אנחנו עובדים. המחיר יהיה כמו בחנות או טוב יותר.',
+  },
+];
+
+const installationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'התקנת מזגנים',
+  description: 'שירות התקנת מזגנים מקצועי בחיפה והקריות - כל סוגי המזגנים, אחריות מלאה',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'פיקס פרו',
+    telephone: '+972-55-432-9235',
+    areaServed: 'חיפה והקריות',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'חיפה',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'התקנות מזגנים',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'התקנה רגילה' },
+        price: '400',
+        priceCurrency: 'ILS',
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: 'ניקוב קיר בטון' },
+        price: '150',
+        priceCurrency: 'ILS',
+      },
+    ],
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <PageHero
+    title="התקנת מזגנים בחיפה והקריות"
+    subtitle="התקנה מקצועית של כל סוגי המזגנים עם אחריות מלאה. מחירים שקופים מראש!"
+    breadcrumbs={breadcrumbs}
+    backgroundImage="/images/services/air-conditioning.webp"
+  />
+
+  <!-- Price Banner -->
+  <section class="bg-accent-500 py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-white text-center md:text-start">
+        <div class="flex items-center gap-4">
+          <span class="text-4xl font-heading font-bold">מ-400₪</span>
+          <div>
+            <p class="font-bold">התקנה רגילה</p>
+            <p class="text-white/80 text-sm">מזגן עילי, תנאים סטנדרטיים</p>
+          </div>
+        </div>
+        <div class="hidden md:block w-px h-12 bg-white/30"></div>
+        <div>
+          <p class="font-bold">כולל: בדיקת ואקום + הפעלה + אחריות</p>
+          <p class="text-white/80 text-sm">חומרים לפי צריכה בפועל</p>
+        </div>
+        <a href="tel:0554329235" class="bg-white text-accent-500 px-6 py-3 font-bold hover:bg-accent-50 transition-colors">
+          055-432-9235
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-muted">
+        <p class="text-lg leading-relaxed">
+          קניתם מזגן חדש ומחפשים מי שיתקין אותו? או שאתם מתכננים לרכוש מזגן ורוצים לדעת מה העלות הכוללת?
+          אנחנו מספקים שירות התקנת מזגנים מקצועי בכל אזור חיפה והקריות - במחירים הוגנים ובאיכות גבוהה.
+        </p>
+        <p>
+          התקנה נכונה היא קריטית לתפקוד המזגן. התקנה לקויה יכולה לגרום לנזילות, קירור לא יעיל, רעשים, ואפילו נזק למזגן.
+          לכן חשוב לבחור מתקין מנוסה שיודע מה הוא עושה - ולא ללכת רק לפי המחיר הנמוך ביותר.
+        </p>
+        <p>
+          הצוות שלנו מתקין מזגנים כבר שנים רבות. אנחנו עובדים עם כל המותגים - אלקטרה, תדיראן, אמקור, מיצובישי, דייקין,
+          גרי, האייר, LG, סמסונג ועוד. כל התקנה נעשית לפי הספר, עם בדיקת ואקום מלאה, מילוי גז מדויק, ובדיקה סופית
+          לוודא שהכל עובד מושלם.
+        </p>
+        <p>
+          אנחנו נותנים הצעת מחיר מפורטת מראש - כולל עבודה וחומרים - כדי שלא יהיו לכם הפתעות.
+          אם יש משהו לא צפוי בזמן ההתקנה - נעדכן אתכם לפני שנמשיך.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Types -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">סוגי התקנות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">איזה סוג התקנה צריכים?</h2>
+        <p class="text-muted max-w-2xl mx-auto">בחרו את סוג ההתקנה המתאים למצב שלכם</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {installationTypes.map((type, index) => (
+          <div class={`bg-white p-6 shadow-sm ${index === 0 ? 'ring-2 ring-accent-500' : ''}`}>
+            {index === 0 && (
+              <span class="inline-block bg-accent-500 text-white text-xs font-bold px-3 py-1 mb-4">
+                הכי נפוץ
+              </span>
+            )}
+            <h3 class="text-xl font-heading font-bold text-dark mb-2">{type.title}</h3>
+            <p class="text-muted text-sm mb-4">{type.description}</p>
+
+            <div class="mb-4">
+              <span class={`text-2xl font-heading font-bold ${index === 0 ? 'text-accent-500' : 'text-brand-600'}`}>
+                {type.price}
+              </span>
+            </div>
+
+            <div class="border-t border-border pt-4 mb-4">
+              <p class="text-sm font-semibold text-dark mb-2">כולל:</p>
+              <ul class="space-y-1">
+                {type.includes.map((item) => (
+                  <li class="flex items-center gap-2 text-sm text-muted">
+                    <svg class="w-4 h-4 text-accent-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <p class="text-xs text-muted italic">{type.note}</p>
+
+            <a href="#contact" class={`block mt-6 text-center py-3 font-bold transition-colors ${index === 0 ? 'bg-accent-500 text-white hover:bg-accent-600' : 'bg-brand-600 text-white hover:bg-brand-700'}`}>
+              קבלו הצעת מחיר
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing by HP -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">מחירון לפי גודל</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">מחיר התקנה לפי כ"ס / BTU</h2>
+        <p class="text-muted">מחירי עבודה בלבד - חומרים לפי צריכה</p>
+      </div>
+
+      <div class="bg-surface overflow-hidden shadow-sm overflow-x-auto">
+        <table class="w-full min-w-[600px]">
+          <thead class="bg-brand-600 text-white">
+            <tr>
+              <th class="text-start py-4 px-4 font-heading font-bold">כ"ס</th>
+              <th class="text-start py-4 px-4 font-heading font-bold">BTU</th>
+              <th class="text-start py-4 px-4 font-heading font-bold">מתאים ל-</th>
+              <th class="text-start py-4 px-4 font-heading font-bold">מחיר התקנה</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            {pricingByHP.map((row, index) => (
+              <tr class={index % 2 === 0 ? 'bg-white' : 'bg-surface'}>
+                <td class="py-4 px-4 text-dark font-bold">{row.hp}</td>
+                <td class="py-4 px-4 text-muted">{row.btu}</td>
+                <td class="py-4 px-4 text-muted">{row.rooms}</td>
+                <td class="py-4 px-4 text-brand-600 font-bold">{row.installation}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras Pricing -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">תוספות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">מחירון תוספות והרחבות</h2>
+        <p class="text-muted">עבודות נוספות שעשויות להידרש בהתקנה</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        {extrasPricing.map((extra) => (
+          <div class="bg-white p-4 shadow-sm flex justify-between items-center">
+            <div>
+              <p class="font-semibold text-dark">{extra.item}</p>
+              <p class="text-sm text-muted">{extra.note}</p>
+            </div>
+            <span class="text-brand-600 font-bold whitespace-nowrap">{extra.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-muted text-sm mt-6">
+        * כל המחירים כוללים מע"מ. המחיר הסופי נקבע לאחר הערכת העבודה בפועל.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">תהליך העבודה</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">איך מתבצעת ההתקנה?</h2>
+        <p class="text-muted max-w-2xl mx-auto">4 שלבים פשוטים מהשיחה הראשונה ועד מזגן עובד</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {process.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-accent-500 mx-auto flex items-center justify-center mb-4">
+              <span class="text-white text-2xl font-heading font-bold">{step.step}</span>
+            </div>
+            <h3 class="font-heading font-bold text-dark mb-2">{step.title}</h3>
+            <p class="text-muted text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Warranty Section -->
+  <section class="py-16 md:py-20 bg-brand-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-accent-400 font-semibold text-sm uppercase tracking-wide mb-2">אחריות</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-6">
+            אחריות מלאה על כל התקנה
+          </h2>
+          <div class="space-y-4 text-white/80">
+            <p>
+              כל התקנה שאנחנו מבצעים מגיעה עם אחריות של שנה מלאה על העבודה.
+              זה כולל כל תקלה שנובעת מההתקנה - נזילות, בעיות צנרת, חיבורים וכו'.
+            </p>
+            <p>
+              בנוסף, אנחנו דואגים למלא את כל המסמכים הנדרשים לאחריות היצרן על המזגן עצמו.
+              אם תצטרכו שירות במסגרת אחריות היצרן - נעזור לכם לממש אותה.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white/10 p-8">
+          <h3 class="text-xl font-heading font-bold text-white mb-6">מה כלול באחריות?</h3>
+          <ul class="space-y-4">
+            {[
+              'אחריות שנה על עבודת ההתקנה',
+              'טיפול חינם בנזילות שנובעות מההתקנה',
+              'תיקון חינם של בעיות צנרת',
+              'סיוע במימוש אחריות יצרן',
+              'מענה טלפוני לשאלות ובעיות',
+            ].map((item) => (
+              <li class="flex items-center gap-3 text-white/90">
+                <svg class="w-5 h-5 text-accent-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas We Cover -->
+  <section class="py-16 md:py-20 bg-surface">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">התקנת מזגנים בכל הצפון</h2>
+        <p class="text-muted">מגיעים לכל אזור חיפה והקריות</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { name: 'חיפה', href: '/areas/haifa/' },
+          { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+          { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+          { name: 'קריית ים', href: '/areas/kiryat-yam/' },
+          { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
+          { name: 'נשר', href: '/areas/nesher/' },
+          { name: 'טבעון', href: '/areas/tivon/' },
+          { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
+        ].map((area) => (
+          <a
+            href={area.href}
+            class="group bg-white hover:bg-brand-600 p-4 shadow-sm text-center transition-all duration-300"
+          >
+            <div class="flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-brand-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-semibold text-dark group-hover:text-white transition-colors">{area.name}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQ
+    title="שאלות נפוצות על התקנת מזגנים"
+    subtitle="תשובות לשאלות הנפוצות ביותר"
+    faqs={faqs}
+  />
+
+  <!-- CTA -->
+  <CTASection
+    title="מחפשים מתקין מזגנים?"
+    subtitle="צרו קשר להצעת מחיר מפורטת"
+  />
+
+  <!-- Contact Form -->
+  <ContactForm variant="card" />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(installationSchema)} />
+</BaseLayout>
