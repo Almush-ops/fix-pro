@@ -209,7 +209,7 @@ const installationSchema = {
 
       <div class="grid lg:grid-cols-3 gap-8">
         {installationTypes.map((type, index) => (
-          <div class={`bg-white p-6 shadow-sm ${index === 0 ? 'ring-2 ring-accent-500' : ''}`}>
+          <div class={`bg-white p-6 shadow-sm flex flex-col h-full ${index === 0 ? 'ring-2 ring-accent-500' : ''}`}>
             {index === 0 && (
               <span class="inline-block bg-accent-500 text-white text-xs font-bold px-3 py-1 mb-4">
                 הכי נפוץ
@@ -224,7 +224,7 @@ const installationSchema = {
               </span>
             </div>
 
-            <div class="border-t border-border pt-4 mb-4">
+            <div class="border-t border-border pt-4 mb-4 flex-1">
               <p class="text-sm font-semibold text-dark mb-2">כולל:</p>
               <ul class="space-y-1">
                 {type.includes.map((item) => (
