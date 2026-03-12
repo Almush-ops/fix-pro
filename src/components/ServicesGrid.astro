@@ -2,7 +2,7 @@
 interface Service {
   title: string;
   description: string;
-  icon: string;
+  image: string;
   href: string;
 }
 
@@ -19,71 +19,65 @@ const {
     {
       title: 'מיזוג אוויר',
       description: 'ניקוי, תיקון, התקנה והחלפת מזגנים. שירות מקצועי לכל סוגי המזגנים - עילי, מיני מרכזי ומרכזי.',
-      icon: 'ac',
+      image: '/images/gallery/gal-hvac-work-1.webp',
       href: '/services/air-conditioning/',
     },
     {
       title: 'אינסטלציה',
       description: 'טיפול בנזילות, סתימות, תיקון צנרת והתקנת אביזרי אמבטיה ומטבח. פתרון מהיר ומקצועי.',
-      icon: 'plumbing',
+      image: '/images/gallery/gal-ac-unit-close.webp',
       href: '/services/plumbing/',
     },
     {
       title: 'הנדימן',
       description: 'עבודות קטנות, תחזוקה, תיקונים ושיפוצים קלים לבית ולעסק. כל מה שצריך במקום אחד.',
-      icon: 'handyman',
+      image: '/images/gallery/gal-hvac-work-2.webp',
       href: '/services/handyman/',
     },
   ],
 } = Astro.props;
-
-const icons: Record<string, string> = {
-  ac: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>`,
-  plumbing: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>`,
-  handyman: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>`,
-};
 ---
 
-<!-- Services Section - Light gray background like Electrician template -->
-<section class="py-16 md:py-24 bg-surface">
+<!-- Services Section - Plumber Style with Image Cards -->
+<section class="py-16 md:py-24 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="text-center mb-12 lg:mb-16">
-      <p class="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-2">השירותים שלנו</p>
-      <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">{title}</h2>
-      <p class="text-muted text-lg max-w-2xl mx-auto">{subtitle}</p>
-    </div>
-
     <!-- Service Cards Grid -->
     <div class="grid md:grid-cols-3 gap-8">
       {services.map((service) => (
-        <a
-          href={service.href}
-          class="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-brand-200"
-        >
-          <!-- Icon -->
-          <div class="w-16 h-16 bg-brand-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
-            <svg class="w-8 h-8 text-brand-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[service.icon] || icons.handyman} />
+        <div class="group bg-brand-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <!-- Image -->
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src={service.image}
+              alt={service.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width="400"
+              height="300"
+              loading="lazy"
+            />
           </div>
 
-          <!-- Title -->
-          <h3 class="text-xl font-heading font-bold text-dark mb-3 group-hover:text-brand-600 transition-colors">
-            {service.title}
-          </h3>
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="text-xl font-heading font-bold text-white mb-3">
+              {service.title}
+            </h3>
+            <p class="text-white/70 leading-relaxed mb-5 text-sm">
+              {service.description}
+            </p>
 
-          <!-- Description -->
-          <p class="text-muted leading-relaxed mb-4">
-            {service.description}
-          </p>
-
-          <!-- Link Arrow -->
-          <div class="flex items-center text-brand-600 font-semibold">
-            <span>למידע נוסף</span>
-            <svg class="w-5 h-5 ms-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
+            <!-- CTA Button - Coral -->
+            <a
+              href={service.href}
+              class="inline-flex items-center gap-2 bg-accent-500 text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-accent-600 transition-colors"
+            >
+              למידע נוסף
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </a>
           </div>
-        </a>
+        </div>
       ))}
     </div>
   </div>

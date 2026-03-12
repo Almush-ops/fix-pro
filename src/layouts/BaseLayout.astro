@@ -52,7 +52,7 @@ const phoneHref = 'tel:+972554329235';
     <!-- Mobile Sticky Phone CTA (left side - start in RTL) -->
     <a
       href={phoneHref}
-      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-2 bg-brand-600 text-white px-4 py-3 rounded-full shadow-lg shadow-brand-600/30 hover:bg-brand-700 transition-colors"
+      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-2 bg-accent-500 text-white px-4 py-3 rounded-full shadow-lg shadow-accent-500/30 hover:bg-accent-600 transition-colors"
       aria-label="חייגו עכשיו"
     >
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ const phoneHref = 'tel:+972554329235';
     <!-- Accessibility Widget (right side - end in RTL) -->
     <button
       id="accessibility-toggle"
-      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-dark text-white rounded-full shadow-lg hover:bg-dark/90 transition-colors flex items-center justify-center"
+      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-lg hover:bg-brand-700 transition-colors flex items-center justify-center"
       aria-label="הגדרות נגישות"
     >
       <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -82,21 +82,21 @@ const phoneHref = 'tel:+972554329235';
       <div class="space-y-3">
         <button
           id="acc-font-increase"
-          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-brand-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-accent-50 transition-colors"
         >
           <span>הגדל גופן</span>
           <span class="text-xl font-bold">A+</span>
         </button>
         <button
           id="acc-font-decrease"
-          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-brand-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-accent-50 transition-colors"
         >
           <span>הקטן גופן</span>
           <span class="text-lg">A-</span>
         </button>
         <button
           id="acc-contrast"
-          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-brand-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-accent-50 transition-colors"
         >
           <span>ניגודיות גבוהה</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const phoneHref = 'tel:+972554329235';
         </button>
         <button
           id="acc-grayscale"
-          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-brand-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-accent-50 transition-colors"
         >
           <span>גווני אפור</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -114,7 +114,7 @@ const phoneHref = 'tel:+972554329235';
         </button>
         <button
           id="acc-links"
-          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-brand-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface rounded-lg hover:bg-accent-50 transition-colors"
         >
           <span>הדגש קישורים</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ const phoneHref = 'tel:+972554329235';
         </button>
         <button
           id="acc-reset"
-          class="w-full p-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-semibold"
+          class="w-full p-3 bg-accent-500 text-white rounded-lg hover:bg-accent-600 transition-colors font-semibold"
         >
           איפוס
         </button>
@@ -281,7 +281,7 @@ const phoneHref = 'tel:+972554329235';
         filter: grayscale(1);
       }
       .highlight-links a {
-        outline: 3px solid #F97316 !important;
+        outline: 3px solid #E85A4F !important;
         outline-offset: 2px;
       }
     </style>
