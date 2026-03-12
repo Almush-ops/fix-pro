@@ -103,11 +103,32 @@ const handymanSchema = {
 <BaseLayout title={title} description={description}>
   <!-- Page Hero -->
   <PageHero
-    title="הנדימן"
-    subtitle="תליית טלוויזיה, הרכבת רהיטים, תיקונים - כל מה שצריך לבית"
+    title="הנדימן בחיפה והקריות"
+    subtitle="תליית טלוויזיה, הרכבת רהיטים, תיקונים - כל מה שצריך לבית במקום אחד"
     breadcrumbs={breadcrumbs}
     backgroundImage="/images/services/handyman.webp"
   />
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-muted">
+        <p class="text-lg leading-relaxed">
+          מחפשים הנדימן מקצועי בחיפה או בקריות? אצלנו תמצאו פתרון אחד לכל העבודות הקטנות בבית -
+          תליית טלוויזיה על הקיר, הרכבת רהיטים מאיקאה, תיקון דלתות וחלונות, התקנת מדפים, צביעה קטנה
+          וכל מה שצריך לתחזוקת הבית.
+        </p>
+        <p>
+          במקום להתקשר לעשרה בעלי מקצוע שונים לכל דבר קטן, יש לכם עכשיו כתובת אחת.
+          אנחנו מגיעים עם כל הכלים הנדרשים, עושים את העבודה מהר ונקי, ונותנים מחיר הוגן ושקוף מראש.
+        </p>
+        <p>
+          אנחנו משרתים את כל אזור חיפה והקריות - קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא,
+          נשר, טבעון וזכרון יעקב. רוב העבודות מתבצעות באותו היום או ביום למחרת.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Services List -->
   <section class="py-16 md:py-20 bg-white">
@@ -177,6 +198,106 @@ const handymanSchema = {
           />
           <div class="absolute -bottom-4 -start-4 w-24 h-24 bg-accent-500 -z-10"></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">מחירון</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">מחירון שירותי הנדימן</h2>
+        <p class="text-muted">מחירים התחלתיים - המחיר הסופי נקבע לפי היקף העבודה</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-surface shadow-sm">
+          <thead class="bg-brand-700 text-white">
+            <tr>
+              <th class="text-start py-4 px-6 font-heading font-bold">שירות</th>
+              <th class="text-start py-4 px-6 font-heading font-bold">מחיר</th>
+              <th class="text-start py-4 px-6 font-heading font-bold">הערות</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">תליית טלוויזיה</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-150₪</td>
+              <td class="py-4 px-6 text-muted text-sm">לא כולל מתקן. הסתרת כבלים בתוספת</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">הרכבת ארון איקאה פשוט</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-100₪</td>
+              <td class="py-4 px-6 text-muted text-sm">שידה, שולחן, כוננית קטנה</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">הרכבת ארון PAX/בגדים</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-300₪</td>
+              <td class="py-4 px-6 text-muted text-sm">תלוי בגודל ומורכבות</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">תיקון דלת</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-120₪</td>
+              <td class="py-4 px-6 text-muted text-sm">צירים, ידית, נעילה</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">התקנת מדפים</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-80₪</td>
+              <td class="py-4 px-6 text-muted text-sm">למדף. מחיר מיוחד ל-3+</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">צביעת חדר</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">400-600₪</td>
+              <td class="py-4 px-6 text-muted text-sm">חדר רגיל, כולל חומרים</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">שעת עבודה (כללי)</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">100₪</td>
+              <td class="py-4 px-6 text-muted text-sm">לעבודות שונות שאין להן מחיר קבוע</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center text-muted text-sm mt-6">
+        * המחירים הם אומדן ראשוני. המחיר הסופי נקבע לאחר הבנת היקף העבודה ומסוכם מראש.
+      </p>
+    </div>
+  </section>
+
+  <!-- Areas We Cover -->
+  <section class="py-16 md:py-20 bg-brand-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">הנדימן בכל חיפה והקריות</h2>
+        <p class="text-white/70">מגיעים לכל האזורים לרוב העבודות באותו היום</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { name: 'חיפה', href: '/areas/haifa/' },
+          { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+          { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+          { name: 'קריית ים', href: '/areas/kiryat-yam/' },
+          { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
+          { name: 'נשר', href: '/areas/nesher/' },
+          { name: 'טבעון', href: '/areas/tivon/' },
+          { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
+        ].map((area) => (
+          <a
+            href={area.href}
+            class="group bg-white/10 hover:bg-accent-500 p-4 text-center transition-all duration-300"
+          >
+            <div class="flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-accent-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-semibold text-white">{area.name}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>

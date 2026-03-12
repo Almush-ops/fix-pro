@@ -101,13 +101,56 @@ const plumbingSchema = {
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page Hero -->
+  <!-- Page Hero with Emergency Emphasis -->
   <PageHero
-    title="אינסטלציה"
-    subtitle="תיקון נזילות, פתיחת סתימות, החלפת ברזים - שירות מהיר ומקצועי"
+    title="אינסטלטור בחיפה והקריות"
+    subtitle="תיקון נזילות, פתיחת סתימות, שירות 24/7 לקריאות חירום - מגיעים תוך שעתיים!"
     breadcrumbs={breadcrumbs}
     backgroundImage="/images/services/plumbing.webp"
+    showCTA={true}
+    ctaText="התקשרו עכשיו"
+    ctaHref="tel:0554329235"
+    phoneText="055-432-9235"
   />
+
+  <!-- Emergency Notice -->
+  <section class="bg-red-600 py-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-white">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span class="font-bold text-lg">חירום? זמינים 24/7!</span>
+        </div>
+        <span>נזילה, סתימה, פיצוץ צנרת - מגיעים גם בלילה ובסופ"ש</span>
+        <a href="tel:0554329235" class="bg-white text-red-600 px-6 py-2 font-bold hover:bg-red-50 transition-colors">
+          055-432-9235
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-muted">
+        <p class="text-lg leading-relaxed">
+          מחפשים אינסטלטור מקצועי בחיפה או בקריות? אנחנו מספקים שירותי אינסטלציה מקיפים לבית ולעסק -
+          תיקון נזילות, פתיחת סתימות, החלפת ברזים, התקנת אסלות וכיורים, ותיקון דודי שמש.
+          ההגעה מהירה, המחיר שקוף מראש, והעבודה מתבצעת עם אחריות מלאה.
+        </p>
+        <p>
+          בעיות אינסטלציה יכולות להפוך לבלאגן גדול אם לא מטפלים בהן בזמן. נזילה קטנה יכולה לגרום לנזקי רטיבות,
+          וסתימה יכולה להפוך לגלישה. לכן אנחנו זמינים 24/7 לקריאות חירום - נזילות, סתימות ופיצוצי צנרת.
+        </p>
+        <p>
+          אנחנו משרתים את כל אזור חיפה והקריות - חיפה, קריית ביאליק, קריית מוצקין, קריית ים, קריית אתא,
+          נשר, טבעון וזכרון יעקב. הגעה תוך שעתיים ברוב המקרים, ובמקרי חירום - מהר יותר.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Services List -->
   <section class="py-16 md:py-20 bg-white">
@@ -177,6 +220,114 @@ const plumbingSchema = {
           />
           <div class="absolute -bottom-4 -end-4 w-24 h-24 bg-accent-500 -z-10"></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">מחירון</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">מחירון שירותי אינסטלציה</h2>
+        <p class="text-muted">מחירים שקופים ללא הפתעות. המחיר הסופי נקבע לפני תחילת העבודה</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-surface shadow-sm">
+          <thead class="bg-brand-700 text-white">
+            <tr>
+              <th class="text-start py-4 px-6 font-heading font-bold">שירות</th>
+              <th class="text-start py-4 px-6 font-heading font-bold">מחיר</th>
+              <th class="text-start py-4 px-6 font-heading font-bold">הערות</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">תיקון נזילה פשוטה</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">150₪</td>
+              <td class="py-4 px-6 text-muted text-sm">ברז, צינור חשוף</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">איתור נזילה סמויה</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-250₪</td>
+              <td class="py-4 px-6 text-muted text-sm">כולל ציוד מקצועי לאיתור</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">פתיחת סתימה</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">200₪</td>
+              <td class="py-4 px-6 text-muted text-sm">כיור, אסלה, מקלחת</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">סתימה + מצלמת ביוב</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-400₪</td>
+              <td class="py-4 px-6 text-muted text-sm">למקרים מורכבים</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">החלפת ברז</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">180₪</td>
+              <td class="py-4 px-6 text-muted text-sm">לא כולל הברז עצמו</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">התקנת אסלה</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-350₪</td>
+              <td class="py-4 px-6 text-muted text-sm">כולל חיבור לביוב</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors">
+              <td class="py-4 px-6 font-semibold text-dark">תיקון דוד שמש</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">מ-250₪</td>
+              <td class="py-4 px-6 text-muted text-sm">תלוי בסוג התקלה</td>
+            </tr>
+            <tr class="hover:bg-accent-50 transition-colors bg-red-50">
+              <td class="py-4 px-6 font-semibold text-dark flex items-center gap-2">
+                קריאת חירום (לילה/סופ"ש)
+                <span class="bg-red-500 text-white text-xs px-2 py-0.5">24/7</span>
+              </td>
+              <td class="py-4 px-6 text-red-600 font-bold">+50%</td>
+              <td class="py-4 px-6 text-muted text-sm">תוספת על מחיר רגיל</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center text-muted text-sm mt-6">
+        * המחירים הם אומדן ראשוני. המחיר הסופי נקבע לאחר בדיקה במקום ומסוכם מראש לפני תחילת העבודה.
+      </p>
+    </div>
+  </section>
+
+  <!-- Areas We Cover -->
+  <section class="py-16 md:py-20 bg-brand-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-accent-500 font-semibold text-sm uppercase tracking-wide mb-2">אזורי שירות</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">אינסטלטור בכל חיפה והקריות</h2>
+        <p class="text-white/70">מגיעים לכל האזורים תוך שעתיים - ובחירום מהר יותר!</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { name: 'חיפה', href: '/areas/haifa/' },
+          { name: 'קריית ביאליק', href: '/areas/kiryat-bialik/' },
+          { name: 'קריית מוצקין', href: '/areas/kiryat-motzkin/' },
+          { name: 'קריית ים', href: '/areas/kiryat-yam/' },
+          { name: 'קריית אתא', href: '/areas/kiryat-ata/' },
+          { name: 'נשר', href: '/areas/nesher/' },
+          { name: 'טבעון', href: '/areas/tivon/' },
+          { name: 'זכרון יעקב', href: '/areas/zichron-yaakov/' },
+        ].map((area) => (
+          <a
+            href={area.href}
+            class="group bg-white/10 hover:bg-accent-500 p-4 text-center transition-all duration-300"
+          >
+            <div class="flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-accent-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span class="font-semibold text-white">{area.name}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
