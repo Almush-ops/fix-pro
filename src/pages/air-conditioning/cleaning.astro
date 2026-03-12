@@ -164,7 +164,7 @@ const cleaningSchema = {
 
       <div class="grid lg:grid-cols-3 gap-8">
         {cleaningTypes.map((type) => (
-          <div class={`bg-white p-6 shadow-sm hover:shadow-lg transition-shadow ${type.highlight ? 'ring-2 ring-accent-500' : ''}`}>
+          <div class={`bg-white p-6 shadow-sm hover:shadow-lg transition-shadow flex flex-col h-full ${type.highlight ? 'ring-2 ring-accent-500' : ''}`}>
             {type.highlight && (
               <div class="flex justify-between items-start mb-4">
                 <span class="inline-block bg-accent-500 text-white text-xs font-bold px-3 py-1">
@@ -183,7 +183,7 @@ const cleaningSchema = {
               <span class="text-muted text-sm">• {type.duration}</span>
             </div>
 
-            <div class="border-t border-border pt-4">
+            <div class="border-t border-border pt-4 flex-1">
               <p class="text-sm font-semibold text-dark mb-2">כולל:</p>
               <ul class="space-y-1">
                 {type.includes.map((item) => (
