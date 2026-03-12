@@ -1,7 +1,6 @@
 ---
 interface Step {
   number: number;
-  icon: string;
   title: string;
   description: string;
 }
@@ -18,60 +17,75 @@ const {
   steps = [
     {
       number: 1,
-      icon: '📞',
       title: 'התקשרו או שלחו WhatsApp',
-      description: 'ספרו לנו במה אתם צריכים עזרה',
+      description: 'ספרו לנו במה אתם צריכים עזרה. נשמח לענות על כל שאלה ולתת הערכה ראשונית.',
     },
     {
       number: 2,
-      icon: '🗓️',
-      title: 'קביעת מועד',
-      description: 'נתאם מועד שמתאים לכם',
+      title: 'קביעת מועד נוח',
+      description: 'נתאם מועד שמתאים לכם. אנחנו מגיעים בזמן שנקבע, בלי הפתעות.',
     },
     {
       number: 3,
-      icon: '🔧',
-      title: 'הגעה ובדיקה',
-      description: 'נגיע, נבדוק ונציע מחיר מראש',
+      title: 'בדיקה והצעת מחיר',
+      description: 'נגיע, נבדוק את הבעיה ונציע מחיר שקוף מראש. אתם מחליטים אם להמשיך.',
     },
     {
       number: 4,
-      icon: '✅',
-      title: 'ביצוע ואחריות',
-      description: 'נבצע את העבודה עם אחריות מלאה',
+      title: 'ביצוע עם אחריות',
+      description: 'נבצע את העבודה במקצועיות עם אחריות מלאה. שביעות רצונכם היא המטרה שלנו.',
     },
   ],
 } = Astro.props;
 ---
 
-<section class="py-16 md:py-20 bg-white">
+<!-- Process Steps Section - Electrician style with vertical numbered list -->
+<section class="py-16 md:py-24 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-3">{title}</h2>
-      <p class="text-muted max-w-2xl mx-auto">{subtitle}</p>
-    </div>
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Image Side -->
+      <div class="relative">
+        <img
+          src="/images/gallery/gal-hvac-work-2.webp"
+          alt="גל מבצע עבודת מיזוג אוויר"
+          class="rounded-2xl shadow-xl w-full"
+          width="800"
+          height="1422"
+          loading="lazy"
+        />
+        <!-- Orange accent -->
+        <div class="absolute -bottom-4 -start-4 w-24 h-24 bg-brand-600 rounded-2xl -z-10"></div>
+      </div>
 
-    <div class="grid md:grid-cols-4 gap-8">
-      {steps.map((step, index) => (
-        <div class="relative text-center">
-          {/* Connector line (hidden on mobile and last item) */}
-          {index < steps.length - 1 && (
-            <div class="hidden md:block absolute top-8 start-1/2 w-full h-0.5 bg-brand-100" />
-          )}
+      <!-- Steps Side -->
+      <div>
+        <p class="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-2">תהליך העבודה</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">{title}</h2>
+        <p class="text-muted text-lg mb-10">{subtitle}</p>
 
-          <div class="relative z-10">
-            <div class="w-16 h-16 mx-auto bg-brand-50 rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-md">
-              <span class="text-2xl">{step.icon}</span>
+        <div class="space-y-8">
+          {steps.map((step, index) => (
+            <div class="flex gap-6">
+              <!-- Number Circle -->
+              <div class="relative flex-shrink-0">
+                <div class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  {step.number}
+                </div>
+                {/* Vertical connector line */}
+                {index < steps.length - 1 && (
+                  <div class="absolute top-12 start-1/2 -translate-x-1/2 w-0.5 h-8 bg-brand-200"></div>
+                )}
+              </div>
+
+              <!-- Content -->
+              <div class="pt-1">
+                <h3 class="text-lg font-heading font-bold text-dark mb-2">{step.title}</h3>
+                <p class="text-muted leading-relaxed">{step.description}</p>
+              </div>
             </div>
-            <div class="absolute -top-1 -end-1 w-6 h-6 bg-brand-600 rounded-full text-white text-sm font-bold flex items-center justify-center">
-              {step.number}
-            </div>
-          </div>
-
-          <h3 class="text-lg font-heading font-bold text-dark mb-2">{step.title}</h3>
-          <p class="text-muted text-sm">{step.description}</p>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   </div>
 </section>
