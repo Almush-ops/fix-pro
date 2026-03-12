@@ -91,7 +91,7 @@
   }
 
   .prose a {
-    @apply text-brand-600 hover:text-brand-700 underline;
+    @apply text-brand-700 hover:text-brand-800 underline;
   }
 
   .prose img {

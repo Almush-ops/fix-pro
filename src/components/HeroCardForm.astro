@@ -1,76 +1,102 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   subtitle?: string;
-  badges?: { icon: string; text: string }[];
 }
 
 const {
   title = 'טכנאי מזגנים, אינסטלטור והנדימן בחיפה והקריות',
   subtitle = 'שירות מהיר, מחיר שקוף, הגעה תוך שעתיים',
-  badges = [
-    { icon: '🔧', text: '24/7 זמינות לחירום' },
-    { icon: '💰', text: '450₪ ניקוי מיני מרכזי' },
-  ],
 } = Astro.props;
 
 const phone = '055-432-9235';
-const whatsappUrl = `https://wa.me/972554329235`;
 ---
 
-<section class="relative overflow-hidden bg-gradient-to-bl from-brand-50 via-white to-white py-16 md:py-24 lg:py-28">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-      <!-- Content (right side in RTL) -->
-      <div class="text-center lg:text-start order-2 lg:order-1">
-        <!-- Badges -->
-        {badges.length > 0 && (
-          <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
-            {badges.map((badge) => (
-              <span class="inline-flex items-center gap-1.5 bg-accent-500 text-white text-sm font-medium px-3 py-1.5 rounded-full">
-                <span>{badge.icon}</span>
-                <span>{badge.text}</span>
-              </span>
-            ))}
-          </div>
-        )}
+<section class="relative min-h-[600px] lg:min-h-[700px] overflow-hidden">
+  <!-- Background Image with Dark Overlay -->
+  <div class="absolute inset-0">
+    <img
+      src="/images/hero/gal-ac-install.webp"
+      alt="גל - טכנאי מזגנים מקצועי בעבודה"
+      class="w-full h-full object-cover object-top"
+      width="1200"
+      height="1600"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- Dark gradient overlay - stronger on the right (text side in RTL) -->
+    <div class="absolute inset-0 bg-gradient-to-l from-dark/95 via-dark/85 to-dark/60"></div>
+  </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-dark leading-tight mb-6">
+  <!-- Orange accent stripe at top -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-brand-600"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[500px]">
+      <!-- Content (right side in RTL - over dark overlay) -->
+      <div class="text-center lg:text-start order-2 lg:order-1">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-brand-600 text-white text-sm font-medium px-4 py-2 rounded-full mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
+          <span>זמינים עכשיו | הגעה תוך שעתיים</span>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-tight mb-6">
           {title}
         </h1>
 
-        {subtitle && (
-          <p class="text-lg md:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8">
-            {subtitle}
-          </p>
-        )}
+        <p class="text-lg md:text-xl text-white/80 max-w-xl mx-auto lg:mx-0 mb-8">
+          {subtitle}
+        </p>
 
         <!-- Trust signals -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-muted">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-white/70 mb-8">
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-brand-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
             <span>15+ שנות ניסיון</span>
           </div>
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-brand-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
             <span>מחיר שקוף מראש</span>
           </div>
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-brand-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
-            <span>הגעה תוך שעתיים</span>
+            <span>אחריות על העבודה</span>
           </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/30"
+          >
+            השאירו פרטים
+          </a>
+          <a
+            href="tel:+972554329235"
+            class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-white/20 transition-colors border border-white/20"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            {phone}
+          </a>
         </div>
       </div>
 
-      <!-- Form Card (left side in RTL) -->
+      <!-- Form Card (left side in RTL - floating over image) -->
       <div class="order-1 lg:order-2">
-        <div class="bg-white rounded-2xl shadow-xl shadow-brand-900/10 p-6 md:p-8 border border-border">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 lg:ms-auto">
           <h2 class="text-xl font-heading font-bold text-dark mb-2 text-center">
             השאירו פרטים ונחזור אליכם
           </h2>
@@ -104,7 +130,7 @@ const whatsappUrl = `https://wa.me/972554329235`;
             </div>
             <button
               type="submit"
-              class="w-full bg-accent-500 text-white py-3.5 px-6 rounded-md font-semibold text-lg hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/25 hover:shadow-accent-500/40"
+              class="w-full bg-brand-600 text-white py-3.5 px-6 rounded-md font-semibold text-lg hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25"
             >
               התקשרו אליי
             </button>
@@ -125,14 +151,14 @@ const whatsappUrl = `https://wa.me/972554329235`;
             </svg>
             שלחו הודעת WhatsApp
           </button>
+
+          <p class="text-xs text-muted text-center mt-4">
+            הפרטים יועברו לגל, בעל העסק, ונחזור אליכם בהקדם
+          </p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Decorative elements -->
-  <div class="absolute top-0 end-0 w-64 h-64 bg-brand-100/50 rounded-full blur-3xl -z-10"></div>
-  <div class="absolute bottom-0 start-0 w-96 h-96 bg-accent-100/30 rounded-full blur-3xl -z-10"></div>
 </section>
 
 <script>

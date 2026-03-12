@@ -52,7 +52,7 @@ const phoneHref = 'tel:+972554329235';
     <!-- Mobile Sticky Phone CTA (left side - start in RTL) -->
     <a
       href={phoneHref}
-      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-2 bg-accent-500 text-white px-4 py-3 rounded-full shadow-lg shadow-accent-500/30 hover:bg-accent-600 transition-colors"
+      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-2 bg-brand-600 text-white px-4 py-3 rounded-full shadow-lg shadow-brand-600/30 hover:bg-brand-700 transition-colors"
       aria-label="חייגו עכשיו"
     >
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ const phoneHref = 'tel:+972554329235';
     <!-- Accessibility Widget (right side - end in RTL) -->
     <button
       id="accessibility-toggle"
-      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-lg hover:bg-brand-700 transition-colors flex items-center justify-center"
+      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-dark text-white rounded-full shadow-lg hover:bg-dark/90 transition-colors flex items-center justify-center"
       aria-label="הגדרות נגישות"
     >
       <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -130,12 +130,12 @@ const phoneHref = 'tel:+972554329235';
       </div>
     </div>
 
-    <!-- WhatsApp Popup -->
+    <!-- WhatsApp Popup (phone only, redirects to partner) -->
     <div
       id="whatsapp-popup"
       class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/50 backdrop-blur-sm"
     >
-      <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-4">
+      <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-4 relative">
         <button id="whatsapp-close" class="absolute top-4 end-4 text-muted hover:text-dark">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
