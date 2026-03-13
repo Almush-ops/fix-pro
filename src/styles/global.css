@@ -2,7 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts loaded via Google Fonts CDN in SEOHead.astro */
+/* Self-hosted Hebrew fonts from Fontsource CDN */
+
+/* Assistant - Body font */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/assistant-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/assistant-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/assistant-700.woff2') format('woff2');
+}
+
+/* Heebo - Heading font */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/heebo-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/heebo-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/heebo-700.woff2') format('woff2');
+}
 
 @layer base {
   html {
