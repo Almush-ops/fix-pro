@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const breadcrumbs = [
+  { label: 'דף הבית', href: '/' },
+  { label: 'מדריכים', href: '/blog/' },
+  { label: post.data.title },
+];
+
+// Article schema
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  image: post.data.image ? `https://fix-pro.co.il${post.data.image}` : undefined,
+  datePublished: post.data.date.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: post.data.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'פיקס פרו',
+    url: 'https://fix-pro.co.il',
+  },
+};
+---
+
+<BaseLayout title={`${post.data.title} | פיקס פרו`} description={post.data.description}>
+  <!-- Breadcrumbs -->
+  <nav class="bg-surface py-3 border-b border-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex flex-wrap items-center gap-2 text-sm text-muted">
+        {breadcrumbs.map((crumb, index) => (
+          <li class="flex items-center gap-2">
+            {index > 0 && <span class="text-gray-400">/</span>}
+            {crumb.href ? (
+              <a href={crumb.href} class="hover:text-brand-600 transition-colors">{crumb.label}</a>
+            ) : (
+              <span class="text-dark font-medium">{crumb.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="py-12 md:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-brand-100 text-brand-700 px-3 py-1 rounded-full text-sm font-medium">
+          {post.data.category}
+        </span>
+        <time class="text-muted text-sm">
+          {post.data.date.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark leading-tight">
+        {post.data.title}
+      </h1>
+      <p class="mt-4 text-lg text-muted">
+        {post.data.description}
+      </p>
+      <div class="mt-6 flex items-center gap-3">
+        <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold">
+          ג
+        </div>
+        <div>
+          <p class="font-medium text-dark">{post.data.author}</p>
+          <p class="text-sm text-muted">טכנאי מזגנים מוסמך</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  {post.data.image && (
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
+      <img
+        src={post.data.image}
+        alt={post.data.imageAlt || post.data.title}
+        class="w-full rounded-xl shadow-lg"
+        width="800"
+        height="450"
+      />
+    </div>
+  )}
+
+  <!-- Article Content -->
+  <article class="py-8 md:py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-dark prose-p:text-muted prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-strong:text-dark prose-li:text-muted">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <!-- Author Box -->
+  <section class="py-8 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-6 items-start">
+        <div class="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+          ג
+        </div>
+        <div>
+          <h3 class="text-xl font-heading font-bold text-dark mb-2">גל - פיקס פרו</h3>
+          <p class="text-muted mb-4">
+            טכנאי מזגנים מוסמך עם ניסיון רב בתחום המיזוג, האינסטלציה ועבודות הנדימן.
+            משרת את אזור חיפה, הקריות והסביבה.
+          </p>
+          <a
+            href="tel:+972554329235"
+            class="inline-flex items-center gap-2 bg-accent-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-accent-600 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            התקשרו עכשיו
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="צריכים עזרה מקצועית?"
+    subtitle="אנחנו כאן בשבילכם - התקשרו עכשיו"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</BaseLayout>

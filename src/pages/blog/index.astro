@@ -1,15 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTASection from '../../components/CTASection.astro';
 
-const title = 'מדריכים וטיפים';
-const description = 'מדריכים מקצועיים וטיפים שימושיים בנושאי מיזוג אוויר, אינסטלציה ותחזוקת הבית. מאת פיקס פרו.';
+const title = 'מדריכים וטיפים | פיקס פרו';
+const description = 'מדריכים מקצועיים וטיפים שימושיים בנושאי מיזוג אוויר, אינסטלציה ותחזוקת הבית. מאת גל מפיקס פרו.';
 
-// Placeholder - content will be added in content phase
-const posts: any[] = [];
+// Get all blog posts sorted by date (newest first)
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const categories = ['מיזוג-אוויר', 'אינסטלציה', 'הנדימן', 'טיפים'] as const;
+
+const categoryLabels: Record<string, string> = {
+  'מיזוג-אוויר': 'מיזוג אוויר',
+  'אינסטלציה': 'אינסטלציה',
+  'הנדימן': 'הנדימן',
+  'טיפים': 'טיפים כלליים',
+};
 ---
 
-<BaseLayout title={title} description={description} noindex={posts.length === 0}>
+<BaseLayout title={title} description={description}>
   <section class="py-16 md:py-20 bg-brand-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
@@ -27,22 +39,44 @@ const posts: any[] = [];
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <article class="group rounded-xl overflow-hidden bg-white border border-border hover:border-brand-200 hover:shadow-lg transition-all">
-              {post.image && (
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  class="w-full h-48 object-cover"
-                  loading="lazy"
-                  width="400"
-                  height="200"
-                />
+              {post.data.image && (
+                <a href={`/blog/${post.slug}/`} class="block">
+                  <div class="aspect-[16/9] overflow-hidden">
+                    <img
+                      src={post.data.image}
+                      alt={post.data.imageAlt || post.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      width="400"
+                      height="225"
+                    />
+                  </div>
+                </a>
               )}
               <div class="p-6">
-                <time class="text-sm text-muted">{post.date}</time>
-                <h2 class="mt-2 text-xl font-heading font-semibold text-dark group-hover:text-brand-600 transition-colors">
-                  <a href={`/blog/${post.slug}/`}>{post.title}</a>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-xs font-medium">
+                    {categoryLabels[post.data.category] || post.data.category}
+                  </span>
+                  <time class="text-sm text-muted">
+                    {post.data.date.toLocaleDateString('he-IL', { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </time>
+                </div>
+                <h2 class="text-xl font-heading font-semibold text-dark group-hover:text-brand-600 transition-colors leading-tight">
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
                 </h2>
-                <p class="mt-3 text-muted line-clamp-3">{post.excerpt}</p>
+                <p class="mt-3 text-muted line-clamp-3 text-sm">
+                  {post.data.description}
+                </p>
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="inline-flex items-center gap-1 mt-4 text-brand-600 font-medium text-sm hover:text-brand-700 transition-colors"
+                >
+                  קראו עוד
+                  <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
               </div>
             </article>
           ))}
