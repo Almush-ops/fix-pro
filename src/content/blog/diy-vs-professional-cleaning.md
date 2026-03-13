@@ -3,7 +3,7 @@ title: "ניקוי מזגן בעצמך או מקצועי - מתי מה עדיף?
 description: "השוואה בין ניקוי מזגן עצמי לניקוי מקצועי. מתי אפשר לחסוך כסף ומתי עדיף לקרוא לטכנאי."
 date: 2024-02-20
 category: "מיזוג-אוויר"
-image: "/images/gal/gal-ducting-install.webp"
+image: "/images/blog/diy-vs-professional.webp"
 imageAlt: "טכנאי מזגנים בעבודה"
 tags: ["ניקוי מזגן", "DIY", "תחזוקה", "השוואה"]
 ---
