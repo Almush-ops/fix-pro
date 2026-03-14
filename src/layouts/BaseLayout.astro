@@ -288,5 +288,19 @@ const phoneHref = 'tel:0554329235';
         outline-offset: 2px;
       }
     </style>
+
+    <!-- GA4 - Deferred for PageSpeed -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DG7Y474G18');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DG7Y474G18';
+        s.async = true;
+        document.head.appendChild(s);
+      });
+    </script>
   </body>
 </html>
