@@ -24,6 +24,8 @@ const organizationSchema = {
   description: 'שירותי מיזוג אוויר, אינסטלציה והנדימן בחיפה והקריות',
   url: 'https://fix-pro.co.il',
   telephone: '+972-55-432-9235',
+  logo: 'https://fix-pro.co.il/images/logo.svg',
+  image: 'https://fix-pro.co.il/images/hero/hero-hvac-pro.webp',
   areaServed: [
     { '@type': 'City', name: 'חיפה' },
     { '@type': 'City', name: 'קריית ביאליק' },
@@ -48,6 +50,19 @@ const organizationSchema = {
     addressRegion: 'חיפה',
     addressCountry: 'IL',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 32.7940,
+    longitude: 34.9896,
+  },
+};
+
+// WebSite schema for sitelinks
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'פיקס פרו',
+  url: 'https://fix-pro.co.il',
 };
 ---
 
@@ -82,6 +97,7 @@ const organizationSchema = {
   <!-- Contact Form -->
   <ContactForm variant="card" />
 
-  <!-- Organization Schema -->
+  <!-- Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 </BaseLayout>
