@@ -98,6 +98,19 @@ const phone = '055-432-9235';
                 placeholder="050-0000000"
               />
             </div>
+            <div class="flex items-start gap-2">
+              <input
+                type="checkbox"
+                id="hero-consent"
+                name="consent"
+                required
+                class="mt-1 w-4 h-4 accent-accent-500"
+              />
+              <label for="hero-consent" class="text-xs text-muted leading-tight">
+                אני מסכים/ה ל<a href="/terms/" class="text-accent-500 hover:underline">תנאי השימוש</a>
+                ול<a href="/privacy/" class="text-accent-500 hover:underline">מדיניות הפרטיות</a>
+              </label>
+            </div>
             <button
               type="submit"
               class="w-full bg-accent-500 text-white py-3.5 px-6 font-bold text-lg hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/25"

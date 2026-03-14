@@ -289,18 +289,69 @@ const phoneHref = 'tel:0554329235';
       }
     </style>
 
-    <!-- GA4 - Deferred for PageSpeed -->
+    <!-- Cookie Consent Banner -->
+    <div
+      id="cookie-consent"
+      class="fixed bottom-0 inset-x-0 z-[70] bg-white border-t border-border shadow-lg p-4 hidden"
+    >
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-dark text-center sm:text-start">
+          אתר זה משתמש בעוגיות לשיפור חוויית הגלישה וניתוח תנועה.
+          <a href="/privacy/" class="text-accent-500 hover:underline">מדיניות פרטיות</a>
+        </p>
+        <div class="flex gap-3">
+          <button
+            id="cookie-reject"
+            class="px-4 py-2 text-sm border border-border text-muted hover:bg-surface transition-colors rounded"
+          >
+            דחייה
+          </button>
+          <button
+            id="cookie-accept"
+            class="px-4 py-2 text-sm bg-accent-500 text-white hover:bg-accent-600 transition-colors rounded font-medium"
+          >
+            אישור
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DG7Y474G18');
-      window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DG7Y474G18';
-        s.async = true;
-        document.head.appendChild(s);
-      });
+      // Cookie Consent Logic
+      (function() {
+        var consent = localStorage.getItem('cookie-consent');
+        var banner = document.getElementById('cookie-consent');
+
+        function loadGA4() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DG7Y474G18');
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DG7Y474G18';
+          s.async = true;
+          document.head.appendChild(s);
+        }
+
+        if (consent === 'accepted') {
+          // User already accepted - load GA4
+          loadGA4();
+        } else if (consent !== 'rejected') {
+          // Show banner
+          banner.classList.remove('hidden');
+        }
+
+        document.getElementById('cookie-accept')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'accepted');
+          banner.classList.add('hidden');
+          loadGA4();
+        });
+
+        document.getElementById('cookie-reject')?.addEventListener('click', function() {
+          localStorage.setItem('cookie-consent', 'rejected');
+          banner.classList.add('hidden');
+        });
+      })();
     </script>
   </body>
 </html>
