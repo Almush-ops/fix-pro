@@ -13,6 +13,7 @@ interface Props {
   noindex?: boolean;
   lang?: string;
   dir?: string;
+  preloadImage?: string;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   noindex = false,
   lang = 'he',
   dir = 'rtl',
+  preloadImage,
 } = Astro.props;
 
 const phone = '055-432-9235';
@@ -40,6 +42,7 @@ const phoneHref = 'tel:0554329235';
       ogType={ogType}
       canonicalUrl={canonicalUrl}
       noindex={noindex}
+      preloadImage={preloadImage}
     />
   </head>
   <body class="min-h-screen flex flex-col bg-white text-dark antialiased font-sans">
