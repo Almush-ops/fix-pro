@@ -61,6 +61,11 @@
     @apply text-dark bg-white font-sans;
   }
 
+  /* Global subtle border radius for all elements */
+  input, textarea, select, button, .card, [class*="shadow"] {
+    border-radius: 2px;
+  }
+
   /* Headings use Heebo */
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;

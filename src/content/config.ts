@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    author: z.string().default('גל - פיקס פרו'),
+    author: z.string().default('גל לוגסי'),
     category: z.enum(['מיזוג-אוויר', 'אינסטלציה', 'הנדימן', 'טיפים']).default('טיפים'),
     tags: z.array(z.string()).optional(),
   }),

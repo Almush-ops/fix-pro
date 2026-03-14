@@ -49,22 +49,22 @@ const phoneHref = 'tel:0554329235';
     </main>
     <Footer />
 
-    <!-- Mobile Sticky Phone CTA (left side - start in RTL) - Sharp corners -->
+    <!-- Mobile Sticky Phone CTA (left side - start in RTL) - Prominent -->
     <a
       href={phoneHref}
-      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-2 bg-accent-500 text-white px-4 py-3 shadow-lg hover:bg-accent-600 transition-colors"
+      class="fixed bottom-4 start-4 z-50 lg:hidden flex items-center gap-3 bg-accent-500 text-white px-6 py-4 rounded-lg shadow-xl shadow-accent-500/30 hover:bg-accent-600 transition-all hover:scale-105"
       aria-label="חייגו עכשיו"
     >
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
       </svg>
-      <span class="font-semibold text-sm">חייגו</span>
+      <span class="font-bold text-base">חייגו עכשיו</span>
     </a>
 
-    <!-- Accessibility Widget (right side - end in RTL) - Sharp corners -->
+    <!-- Accessibility Widget (right side - end in RTL) - Rounded -->
     <button
       id="accessibility-toggle"
-      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-brand-700 text-white shadow-lg hover:bg-brand-600 transition-colors flex items-center justify-center"
+      class="fixed bottom-4 end-4 z-50 w-12 h-12 bg-brand-700 text-white shadow-lg rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center"
       aria-label="הגדרות נגישות"
     >
       <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -73,30 +73,30 @@ const phoneHref = 'tel:0554329235';
       </svg>
     </button>
 
-    <!-- Accessibility Panel - Sharp corners -->
+    <!-- Accessibility Panel - Rounded -->
     <div
       id="accessibility-panel"
-      class="fixed bottom-20 end-4 z-50 hidden bg-white shadow-2xl border border-border p-4 w-72"
+      class="fixed bottom-20 end-4 z-50 hidden bg-white shadow-2xl border border-border rounded-lg p-4 w-72"
     >
       <h3 class="font-heading font-bold text-dark mb-4">הגדרות נגישות</h3>
       <div class="space-y-3">
         <button
           id="acc-font-increase"
-          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors rounded"
         >
           <span>הגדל גופן</span>
           <span class="text-xl font-bold">A+</span>
         </button>
         <button
           id="acc-font-decrease"
-          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors rounded"
         >
           <span>הקטן גופן</span>
           <span class="text-lg">A-</span>
         </button>
         <button
           id="acc-contrast"
-          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors rounded"
         >
           <span>ניגודיות גבוהה</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const phoneHref = 'tel:0554329235';
         </button>
         <button
           id="acc-grayscale"
-          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors rounded"
         >
           <span>גווני אפור</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -114,7 +114,7 @@ const phoneHref = 'tel:0554329235';
         </button>
         <button
           id="acc-links"
-          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors"
+          class="w-full flex items-center justify-between p-3 bg-surface hover:bg-accent-50 transition-colors rounded"
         >
           <span>הדגש קישורים</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ const phoneHref = 'tel:0554329235';
         </button>
         <button
           id="acc-reset"
-          class="w-full p-3 bg-accent-500 text-white hover:bg-accent-600 transition-colors font-semibold"
+          class="w-full p-3 bg-accent-500 text-white hover:bg-accent-600 transition-colors font-semibold rounded"
         >
           איפוס
         </button>
@@ -135,7 +135,7 @@ const phoneHref = 'tel:0554329235';
       id="whatsapp-popup"
       class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/50 backdrop-blur-sm"
     >
-      <div class="bg-white shadow-2xl p-6 w-full max-w-sm mx-4 relative">
+      <div class="bg-white shadow-2xl rounded-lg p-6 w-full max-w-sm mx-4 relative">
         <button id="whatsapp-close" class="absolute top-4 end-4 text-muted hover:text-dark">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
