@@ -175,8 +175,7 @@ const trustBadges = [
 
           <button
             type="button"
-            id="footer-whatsapp-btn"
-            class="flex items-center gap-3 group cursor-pointer"
+            class="whatsapp-popup-trigger flex items-center gap-3 group cursor-pointer"
           >
             <div class="w-10 h-10 bg-green-500/20 group-hover:bg-green-500 rounded-lg flex items-center justify-center transition-colors">
               <svg class="w-5 h-5 text-green-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -242,9 +241,4 @@ const trustBadges = [
   </div>
 </footer>
 
-<script>
-  // Footer WhatsApp button - triggers popup in BaseLayout
-  document.getElementById('footer-whatsapp-btn')?.addEventListener('click', () => {
-    document.dispatchEvent(new CustomEvent('open-whatsapp-popup'));
-  });
-</script>
+<!-- WhatsApp click handler is in WhatsAppButton.astro (targets .whatsapp-popup-trigger) -->

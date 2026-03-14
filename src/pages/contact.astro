@@ -52,7 +52,7 @@ const breadcrumbs = [
               </div>
               <div>
                 <h3 class="font-semibold text-dark mb-1">WhatsApp</h3>
-                <button id="contact-whatsapp" class="text-green-600 hover:underline text-lg">שליחת הודעה</button>
+                <button class="whatsapp-popup-trigger text-green-600 hover:underline text-lg cursor-pointer">שליחת הודעה</button>
                 <p class="text-muted text-sm mt-1">תשובה מהירה בכל שעה</p>
               </div>
             </div>
@@ -164,8 +164,5 @@ const breadcrumbs = [
     }
   });
 
-  // WhatsApp button
-  document.getElementById('contact-whatsapp')?.addEventListener('click', () => {
-    document.dispatchEvent(new CustomEvent('open-whatsapp-popup'));
-  });
+  // WhatsApp button handler is in WhatsAppButton.astro (targets .whatsapp-popup-trigger)
 </script>
