@@ -5,7 +5,7 @@ import CTASection from '../../components/CTASection.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import FAQ from '../../components/FAQ.astro';
 
-const title = 'טכנאי מזגנים בחיפה והקריות | ניקוי מ-150₪ | פיקס פרו';
+const title = 'טכנאי מזגנים בחיפה והקריות | ניקוי 250₪ | פיקס פרו';
 const description = 'שירות מיזוג אוויר מקצועי בחיפה והקריות. ניקוי מזגנים, תיקון, התקנה ומילוי גז. ניקוי מיני מרכזי ב-450₪ בלבד. הגעה תוך שעתיים.';
 
 const breadcrumbs = [
@@ -18,7 +18,7 @@ const services = [
   {
     title: 'ניקוי מזגנים',
     description: 'ניקוי יסודי של מזגנים עיליים ומיני מרכזיים. כולל ניקוי פילטרים, מאייד, מפוח וחיטוי נגד ריחות ועובש.',
-    price: 'מ-150₪',
+    price: '250₪',
     href: '/air-conditioning/cleaning/',
     highlight: true,
     badge: 'מיני מרכזי 450₪',
@@ -26,31 +26,31 @@ const services = [
   {
     title: 'תיקון מזגנים',
     description: 'אבחון ותיקון כל סוגי התקלות - מזגן לא מקרר, נזילות, רעשים, מילוי גז ועוד. שירות חירום 24/7.',
-    price: 'מ-100₪',
+    price: '250₪ קריאה',
     href: '/air-conditioning/repair/',
   },
   {
     title: 'התקנת מזגנים',
     description: 'התקנה מקצועית של מזגנים חדשים - עיליים, מיני מרכזי ומרכזי. כולל צנרת, חיבור וואקום.',
-    price: 'מ-400₪',
+    price: '700₪',
     href: '/air-conditioning/installation/',
   },
   {
     title: 'טכנאי מזגנים',
     description: 'טכנאי מוסמך עם ניסיון רב. הגעה מהירה תוך שעה לכל אזור חיפה והקריות. כל המותגים.',
-    price: 'קריאה 100₪',
+    price: 'קריאה 250₪',
     href: '/air-conditioning/technician/',
   },
   {
     title: 'מילוי גז',
     description: 'מילוי גז R410A או R32 למזגנים. כולל בדיקת דליפות. אם צריך למלא תכוף - יש דליפה לתקן.',
-    price: 'מ-250₪',
+    price: '450₪',
     href: '/air-conditioning/repair/',
   },
   {
     title: 'פירוק והעברת מזגן',
     description: 'פירוק מזגן ממקום קיים והתקנתו מחדש. מתאים למעבר דירה או שיפוץ.',
-    price: 'מ-400₪',
+    price: 'לפי הצעה',
     href: '/air-conditioning/installation/',
   },
 ];
@@ -246,7 +246,7 @@ const acSchema = {
           <tbody class="divide-y divide-border">
             <tr class="hover:bg-accent-50 transition-colors">
               <td class="py-4 px-6 font-semibold text-dark">ניקוי מזגן עילי</td>
-              <td class="py-4 px-6 text-brand-600 font-bold">150₪</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">250₪</td>
               <td class="py-4 px-6 text-muted text-sm">כולל פילטרים וחיטוי</td>
             </tr>
             <tr class="hover:bg-accent-50 transition-colors bg-accent-50/50">
@@ -258,24 +258,24 @@ const acSchema = {
               <td class="py-4 px-6 text-muted text-sm">פירוק מלא, ניקוי מאייד וכל החלקים</td>
             </tr>
             <tr class="hover:bg-accent-50 transition-colors">
-              <td class="py-4 px-6 font-semibold text-dark">תיקון מזגן</td>
-              <td class="py-4 px-6 text-brand-600 font-bold">מ-200₪</td>
-              <td class="py-4 px-6 text-muted text-sm">אבחון במקום, תלוי בסוג התקלה</td>
+              <td class="py-4 px-6 font-semibold text-dark">תיקון מזגן (קריאת שירות)</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">250₪</td>
+              <td class="py-4 px-6 text-muted text-sm">מקוזז מעלות התיקון</td>
             </tr>
             <tr class="hover:bg-accent-50 transition-colors">
               <td class="py-4 px-6 font-semibold text-dark">מילוי גז</td>
-              <td class="py-4 px-6 text-brand-600 font-bold">מ-300₪</td>
-              <td class="py-4 px-6 text-muted text-sm">R410A או R32, כולל בדיקת נזילות</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">450₪</td>
+              <td class="py-4 px-6 text-muted text-sm">כל סוגי הגזים</td>
             </tr>
             <tr class="hover:bg-accent-50 transition-colors">
               <td class="py-4 px-6 font-semibold text-dark">התקנת מזגן עילי</td>
-              <td class="py-4 px-6 text-brand-600 font-bold">מ-500₪</td>
-              <td class="py-4 px-6 text-muted text-sm">כולל צנרת עד 3 מטר</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">700₪</td>
+              <td class="py-4 px-6 text-muted text-sm">כולל צנרת עד 5 מטר</td>
             </tr>
             <tr class="hover:bg-accent-50 transition-colors">
-              <td class="py-4 px-6 font-semibold text-dark">התקנת מזגן + צנרת ארוכה</td>
-              <td class="py-4 px-6 text-brand-600 font-bold">מ-700₪</td>
-              <td class="py-4 px-6 text-muted text-sm">צנרת מעל 3 מטר, תלוי באורך</td>
+              <td class="py-4 px-6 font-semibold text-dark">תוספת צנרת</td>
+              <td class="py-4 px-6 text-brand-600 font-bold">135₪/מטר</td>
+              <td class="py-4 px-6 text-muted text-sm">מעבר ל-5 מטר</td>
             </tr>
           </tbody>
         </table>

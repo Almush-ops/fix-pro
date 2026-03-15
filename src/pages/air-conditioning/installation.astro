@@ -6,7 +6,7 @@ import ContactForm from '../../components/ContactForm.astro';
 import FAQ from '../../components/FAQ.astro';
 
 const title = 'התקנת מזגן בחיפה | מחירון 2026 | פיקס פרו';
-const description = 'התקנת מזגנים מקצועית בחיפה והקריות. התקנה רגילה מ-400₪, התקנה מורכבת לפי הצעה. כל המותגים, אחריות מלאה, הגעה מהירה!';
+const description = 'התקנת מזגנים מקצועית בחיפה והקריות. התקנת מזגן עילי 700₪, התקנה מורכבת לפי הצעה. כל המותגים, אחריות מלאה, הגעה מהירה!';
 
 const breadcrumbs = [
   { label: 'דף הבית', href: '/' },
@@ -18,7 +18,7 @@ const installationTypes = [
   {
     title: 'התקנה רגילה',
     description: 'התקנת מזגן עילי בתנאים רגילים - קיר בנוי סטנדרטי, גובה עד 3 מטר, צנרת עד 5 מטר. כולל התקנת יחידה פנימית, יחידה חיצונית, וחיבור צנרת נחושת.',
-    price: 'מ-400₪',
+    price: '700₪',
     includes: ['התקנת יחידה פנימית', 'התקנת יחידה חיצונית', 'צנרת עד 5 מטר', 'בדיקת ואקום', 'הפעלה ובדיקה'],
     note: 'המחיר לא כולל חומרים (צנרת, כבלים, קונסולה)',
   },
@@ -39,13 +39,13 @@ const installationTypes = [
 ];
 
 const pricingByHP = [
-  { hp: '1.0-1.5', btu: '12,000-18,000', rooms: 'חדר עד 20 מ"ר', installation: '400-500₪', note: 'התקנה רגילה' },
-  { hp: '2.0-2.5', btu: '24,000-30,000', rooms: 'סלון עד 35 מ"ר', installation: '450-550₪', note: 'התקנה רגילה' },
-  { hp: '3.0+', btu: '36,000+', rooms: 'שטח גדול/מסחרי', installation: '550₪+', note: 'לפי הערכה' },
+  { hp: '1.0-1.5', btu: '12,000-18,000', rooms: 'חדר עד 20 מ"ר', installation: '700₪', note: 'התקנה רגילה' },
+  { hp: '2.0-2.5', btu: '24,000-30,000', rooms: 'סלון עד 35 מ"ר', installation: '700₪+', note: 'התקנה רגילה' },
+  { hp: '3.0+', btu: '36,000+', rooms: 'שטח גדול/מסחרי', installation: 'לפי הצעה', note: 'לפי הערכה' },
 ];
 
 const extrasPricing = [
-  { item: 'צנרת נחושת (מעבר ל-5 מטר)', price: '50₪/מטר', note: 'כולל חומר ועבודה' },
+  { item: 'תוספת צנרת (מעבר ל-5 מטר)', price: '135₪/מטר', note: 'כולל חומר ועבודה' },
   { item: 'ניקוב קיר בטון', price: '150₪', note: 'לניקוב' },
   { item: 'קונסולה ליחידה חיצונית', price: '200-400₪', note: 'תלוי בגודל' },
   { item: 'כיסוי צנרת (גלילה)', price: '80₪/מטר', note: 'מראה אסתטי' },
@@ -81,7 +81,7 @@ const process = [
 const faqs = [
   {
     question: 'כמה עולה התקנת מזגן?',
-    answer: 'התקנה רגילה של מזגן עילי עולה בין 400-550₪, תלוי בגודל המזגן ותנאי ההתקנה. המחיר לא כולל חומרים כמו צנרת וקונסולה (בדרך כלל עוד 300-500₪). אם יש עבודות בניה כמו ניקוב בטון או עבודה בגובה - המחיר גבוה יותר ונקבע לפי ביקור. תמיד נותנים הצעת מחיר מלאה לפני העבודה.',
+    answer: 'התקנת מזגן עילי עולה 700₪ (לפני מע"מ) לתנאים רגילים. תוספת צנרת מעבר ל-5 מטר: 135₪ למטר. אם יש עבודות בניה כמו ניקוב בטון או עבודה בגובה - המחיר גבוה יותר ונקבע לפי ביקור. תמיד נותנים הצעת מחיר מלאה לפני העבודה.',
   },
   {
     question: 'כמה זמן לוקחת התקנת מזגן?',
@@ -126,8 +126,8 @@ const installationSchema = {
     itemListElement: [
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'התקנה רגילה' },
-        price: '400',
+        itemOffered: { '@type': 'Service', name: 'התקנת מזגן עילי' },
+        price: '700',
         priceCurrency: 'ILS',
       },
       {
@@ -155,10 +155,10 @@ const installationSchema = {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-white text-center md:text-start">
         <div class="flex items-center gap-4">
-          <span class="text-4xl font-heading font-bold">מ-400₪</span>
+          <span class="text-4xl font-heading font-bold">700₪</span>
           <div>
-            <p class="font-bold">התקנה רגילה</p>
-            <p class="text-white/80 text-sm">מזגן עילי, תנאים סטנדרטיים</p>
+            <p class="font-bold">התקנת מזגן עילי</p>
+            <p class="text-white/80 text-sm">תנאים סטנדרטיים, לפני מע"מ</p>
           </div>
         </div>
         <div class="hidden md:block w-px h-12 bg-white/30"></div>
